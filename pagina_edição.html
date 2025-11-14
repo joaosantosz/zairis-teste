@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Dancing+Script:wght@400;700&family=Julius+Sans+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* [CSS otimizado e simplificado] */
+        /* SEU CSS ORIGINAL AQUI - MANTIDO INTACTO */
         :root {
             --primary-color: #000000;
             --secondary-color: #ff6b81;
@@ -38,7 +38,6 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #eed7dd 100%);
         }
 
-        /* Layout principal responsivo usando Flexbox */
         .editor-container {
             display: flex;
             flex-wrap: wrap;
@@ -56,7 +55,7 @@
             box-shadow: var(--card-shadow);
             overflow: hidden;
             border: 1px solid #f0f0f0;
-            order: 1; /* Formulário vem primeiro */
+            order: 1;
         }
 
         .preview-section {
@@ -66,10 +65,9 @@
             justify-content: center;
             position: sticky;
             top: 20px;
-            order: 2; /* Preview vem depois */
+            order: 2;
         }
 
-        /* Em telas pequenas, muda a ordem para formulário acima do preview */
         @media (max-width: 1024px) {
             .preview-section {
                 position: static;
@@ -84,7 +82,6 @@
             }
         }
 
-        /* Restante do CSS do formulário permanece igual */
         .form-header {
             background: var(--white);
             color: var(--primary-color);
@@ -581,7 +578,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* NOVO CSS PARA SELETORES DE COR PERSONALIZADOS */
         .color-picker-container {
             display: flex;
             align-items: center;
@@ -638,7 +634,6 @@
             display: block;
         }
         
-        /* Estilos para validação de URL */
         .optional-section.url-valid {
             border-left-color: #28a745 !important;
             background: rgba(40, 167, 69, 0.1) !important;
@@ -671,7 +666,6 @@
             border: 1px solid #f5c6cb;
         }
 
-        /* MOCKUP DO IPHONE 15 - OTIMIZADO PARA RESPONSIVIDADE */
         .iphone-15-mockup {
             width: 100%;
             max-width: 390px;
@@ -716,7 +710,6 @@
             display: none;
         }
 
-        /* Dynamic Island do iPhone 15 */
         .dynamic-island {
             position: absolute;
             top: 10px;
@@ -751,7 +744,6 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
-        /* Botões laterais do iPhone */
         .iphone-button {
             position: absolute;
             background: #5d5d60;
@@ -780,9 +772,8 @@
             height: 80px;
         }
 
-        /* Conteúdo do preview - OTIMIZADO PARA RESPONSIVIDADE */
         .preview-site {
-            position: relative; /* Adicione esta linha */
+            position: relative;
             min-height: 100%;
             display: flex;
             flex-direction: column;
@@ -845,6 +836,11 @@
                 width: 90%;
                 font-weight: 400;
                 letter-spacing: 1px;
+                /* CORREÇÃO: Adicionar quebra de palavras longas */
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                word-break: break-word;
+                hyphens: auto;
         }
         
         .message {
@@ -856,6 +852,11 @@
             margin-top: 0px;
             background: rgba(255, 255, 255, 0.7);
             border-radius: 0 0 15px 15px;
+            /* CORREÇÃO: Adicionar quebra de palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
         
         .heart {
@@ -904,6 +905,11 @@
             margin-bottom: 10px;
             text-align: center;
             position: relative;
+            /* CORREÇÃO: Adicionar quebra de palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
         
         .declaration-title:after {
@@ -921,6 +927,11 @@
             line-height: 1.6;
             color: var(--text-color);
             text-align: center;
+            /* CORREÇÃO: Adicionar quebra de palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
         
         .carousel-container {
@@ -980,6 +991,11 @@
             color: var(--primary-color);
             font-family: 'Dancing Script', cursive;
             font-size: clamp(16px, 4vw, 18px);
+            /* CORREÇÃO: Adicionar quebra de palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
         
         .section-divider::before,
@@ -1037,6 +1053,11 @@
             color: var(--primary-color);
             font-size: clamp(16px, 4vw, 18px);
             margin-bottom: 8px;
+            /* CORREÇÃO: Adicionar quebra de palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
         
         .plan-text {
@@ -1044,6 +1065,11 @@
             color: var(--text-color);
             line-height: 1.5;
             font-size: clamp(12px, 3vw, 13px);
+            /* CORREÇÃO: Adicionar quebra de palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
         
         .animated-message {
@@ -1063,6 +1089,11 @@
             width: 100%;
             opacity: 0;
             animation: rotateMessage 15s infinite;
+            /* CORREÇÃO: Adicionar quebra de palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
         
         @keyframes rotateMessage {
@@ -1088,6 +1119,11 @@
             font-size: clamp(20px, 5vw, 24px);
             color: var(--primary-color);
             margin-bottom: 15px;
+            /* CORREÇÃO: Adicionar quebra de palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
         
         .promise-item {
@@ -1098,6 +1134,11 @@
             padding-bottom: 10px;
             border-bottom: 1px dashed var(--light-pink);
             position: relative;
+            /* CORREÇÃO: Adicionar quebra de palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
         
         .promise-item:last-child {
@@ -1121,7 +1162,6 @@
             box-shadow: 0 5px 15px rgba(224, 168, 168, 0.3);
         }
         
-        /* Estilos para os elementos de vídeo e música */
         .video-wrapper {
             position: relative;
             border-radius: 10px;
@@ -1159,9 +1199,13 @@
             color: var(--primary-color);
             text-align: center;
             margin-top: 10px;
+            /* CORREÇÃO: Adicionar quebra de palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
         
-        /* NOVO CSS PARA CONTADOR DE TEMPO */
         .simple-counter {
             max-width: 600px;
             margin: 0 auto 30px;
@@ -1179,6 +1223,11 @@
             border-radius: 40px;
             backdrop-filter: blur(5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            /* CORREÇÃO: Adicionar quebra de palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
         
         .simple-counter span {
@@ -1186,7 +1235,6 @@
             color: var(--secondary-color);
         }
 
-        /* ÍCONE DE MÚSICA CORRIGIDO - DENTRO DO PREVIEW E FIXO */
         .preview-music-control {
             position: absolute;
             bottom: 10px;
@@ -1213,9 +1261,80 @@
             transform: scale(1.1);
         }
 
-        /* Responsividade otimizada - MENOS MEDIA QUERIES */
-        @media (max-width: 768px) {
+        /* CORREÇÃO GLOBAL: Adicionar quebra de palavras para todos os elementos de texto */
+        .form-control, 
+        .declaration-title, 
+        .declaration-text, 
+        .plan-title, 
+        .plan-text, 
+        .promise-item,
+        .video-message,
+        .simple-counter p,
+        .section-divider,
+        .message,
+        .title {
+            /* Propriedades para quebrar palavras longas */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
+        }
 
+        /* NOVOS ESTILOS PARA AS MELHORIAS */
+        .validation-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+            padding: 8px 12px;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .modal-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .modal-content p {
+            color: var(--dark-gray);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
             .color-picker-container {
                 flex-direction: column;
                 align-items: flex-start;
@@ -1281,13 +1400,16 @@
                 width: 2.5rem;
                 height: 2.5rem;
                 font-size: 1rem;
-                bottom: 8px; /* Ajuste para mobile */
-                left: 8px;   /* Ajuste para mobile */
+                bottom: 8px;
+                left: 8px;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
             }
         }
 
         @media (max-width: 480px) {
-
             .color-picker-container {
                 padding: 12px;
             }
@@ -1296,8 +1418,6 @@
                 width: 45px;
                 height: 45px;
             }
-
-            /* Ajustes adicionais para mobile muito pequeno */
 
             .iphone-15-mockup {
                 max-width: 320px;
@@ -1342,13 +1462,25 @@
                 width: 2rem;
                 height: 2rem;
                 font-size: 0.9rem;
-                bottom: 6px; /* Ajuste para mobile pequeno */
-                left: 6px;   /* Ajuste para mobile pequeno */
+                bottom: 6px;
+                left: 6px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Modal para restauração de edição -->
+    <div id="restoreModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3>Continuar edição?</h3>
+            <p>Encontramos uma edição anterior não finalizada. Deseja continuar de onde parou?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" id="restoreNo">Não, começar do zero</button>
+                <button class="btn btn-primary" id="restoreYes">Sim, continuar</button>
+            </div>
+        </div>
+    </div>
+
     <div class="editor-container">
         <!-- Seção do Formulário -->
         <div class="form-section">
@@ -1374,8 +1506,8 @@
 
                     <div class="form-group">
                         <label for="pageName" class="required">Nome do Site (URL)</label>
-                        <input type="text" id="pageName" class="form-control" placeholder="Ex: nossa-amizade" maxlength="30" required>
-                        <div class="error-message" id="pageNameError">Por favor, insira um nome para o site</div>
+                        <input type="text" id="pageName" class="form-control" placeholder="Ex: nossa-amizade" maxlength="15" required>
+                        <div class="validation-message" id="pageNameError">Por favor, preencha este campo antes de continuar.</div>
                         <small style="color: var(--dark-gray);">URL: zairis.com/<strong id="url-preview">nossa-amizade</strong></small>
                     </div>
 
@@ -1419,8 +1551,8 @@
 
                     <div class="form-group">
                         <label for="mainTitle" class="required">Título Principal</label>
-                        <input type="text" id="mainTitle" class="form-control" placeholder="Ex: Para Minha Mãe Incrível" maxlength="50" required>
-                        <div class="error-message" id="mainTitleError">Por favor, insira um título principal</div>
+                        <input type="text" id="mainTitle" class="form-control" placeholder="Ex: Para o Meu Amor" maxlength="25" required>
+                        <div class="validation-message" id="mainTitleError">Por favor, preencha este campo antes de continuar.</div>
                     </div>
 
                     <div class="navigation-buttons">
@@ -1440,7 +1572,7 @@
                     <div class="form-group">
                         <label for="mainMessage" class="required">Mensagem Principal</label>
                         <textarea id="mainMessage" class="form-control" placeholder="Escreva aqui tudo o que sente..." maxlength="500" required></textarea>
-                        <div class="error-message" id="mainMessageError">Por favor, escreva uma mensagem principal</div>
+                        <div class="validation-message" id="mainMessageError">Por favor, preencha este campo antes de continuar.</div>
                         <small style="color: var(--dark-gray);"><span id="mainMessageCount">0</span>/500 caracteres</small>
                     </div>
 
@@ -1521,7 +1653,7 @@
                                     </div>
                                 </div>
                                 <input type="file" id="carouselMultipleInput" accept="image/*" multiple class="hidden">
-                                <div class="error-message" id="carouselError" style="display: none;">
+                                <div class="validation-message" id="carouselError">
                                     Por favor, selecione pelo menos 3 imagens
                                 </div>
                             </div>
@@ -1554,7 +1686,7 @@
                         <div class="dynamic-fields" id="plansFields">
                             <div class="form-group">
                                 <label>Título da Seção</label>
-                                <input type="text" class="form-control" id="plansTitle" value="Nossos Planos" maxlength="30">
+                                <input type="text" class="form-control" id="plansTitle" value="Nossos Planos" maxlength="50">
                             </div>
                             
                             <div class="counter-controls">
@@ -1596,7 +1728,7 @@
                         <div class="dynamic-fields" id="promisesFields">
                             <div class="form-group">
                                 <label>Título das Promessas</label>
-                                <input type="text" class="form-control" id="promisesTitle" value="Minhas Promessas" maxlength="30">
+                                <input type="text" class="form-control" id="promisesTitle" value="Minhas Promessas" maxlength="20">
                             </div>
                             
                             <div id="promisesContainer">
@@ -1604,6 +1736,7 @@
                             </div>
                             <button type="button" class="add-btn" onclick="addPromise()">
                                 <i class="fas fa-plus"></i> Adicionar Promessa
+                                <span id="promiseCounter">(0/10)</span> <!-- Contador adicionado -->
                             </button>
                         </div>
                     </div>
@@ -1672,7 +1805,7 @@
                     </div>
                 </div>
 
-                <!-- NOVO PASSO 10: Contador de Tempo -->
+                <!-- Passo 10: Contador de Tempo -->
                 <div class="step-content" id="step-10">
                     <h3 class="step-title"><i class="fas fa-clock"></i> Tempo Juntos</h3>
                     
@@ -1710,7 +1843,7 @@
                     </div>
                 </div>
 
-                <!-- NOVO PASSO 11: Efeito de Pétalas -->
+                <!-- Passo 11: Efeito de Pétalas -->
                 <div class="step-content" id="step-11">
                     <h3 class="step-title"><i class="fas fa-magic"></i> Efeito Especial</h3>
                     
@@ -1742,7 +1875,7 @@
                     </div>
                 </div>
 
-                <!-- Passo 12: Cores (agora é o passo 12) -->
+                <!-- Passo 12: Cores -->
                 <div class="step-content" id="step-12">
                     <h3 class="step-title"><i class="fas fa-palette"></i> Cores</h3>
                     
@@ -1805,7 +1938,7 @@
         // MÓDULO PRINCIPAL - ESTADO E CONFIGURAÇÃO
         // =============================================
         
-        // Estado completo do site - independente do banco de dados
+        // Estado completo do site
         const siteData = {
             pageName: "",
             mainImage: "",
@@ -1855,18 +1988,321 @@
         let isMusicPlaying = false;
         let musicIframe = null;
 
+        // Cache de elementos DOM
+        const domCache = {};
+
         // =============================================
-        // FUNÇÕES PARA VÍDEO E MÚSICA DO YOUTUBE
+        // MÓDULO DE VALIDAÇÃO OBRIGATÓRIA
         // =============================================
 
-        // Função única para extrair ID do YouTube
+        // Função otimizada para validação de campos obrigatórios
+        function validateRequiredField(inputElement, errorElement) {
+            const value = inputElement.value.trim();
+            const isValid = value !== '';
+            
+            if (!isValid) {
+                showValidationError(errorElement);
+            } else {
+                hideValidationError(errorElement);
+            }
+            
+            return isValid;
+        }
+
+        function showValidationError(errorElement) {
+            errorElement.style.display = 'block';
+            setTimeout(() => {
+                errorElement.style.opacity = '1';
+            }, 10);
+        }
+
+        function hideValidationError(errorElement) {
+            errorElement.style.opacity = '0';
+            setTimeout(() => {
+                errorElement.style.display = 'none';
+            }, 300);
+        }
+
+        // Validação centralizada por passo
+        function validateCurrentStep() {
+            const stepValidators = {
+                1: () => validateRequiredField(
+                    getCachedElement('pageName'), 
+                    getCachedElement('pageNameError')
+                ),
+                3: () => validateRequiredField(
+                    getCachedElement('mainTitle'), 
+                    getCachedElement('mainTitleError')
+                ),
+                4: () => validateRequiredField(
+                    getCachedElement('mainMessage'), 
+                    getCachedElement('mainMessageError')
+                ),
+                6: () => {
+                    if (siteData.elements.carousel && siteData.carouselImages.length < 3) {
+                        showValidationError(getCachedElement('carouselError'));
+                        return false;
+                    }
+                    hideValidationError(getCachedElement('carouselError'));
+                    return true;
+                }
+            };
+            
+            return stepValidators[currentStep] ? stepValidators[currentStep]() : true;
+        }
+
+        // =============================================
+        // MÓDULO DE CACHE E PERFORMANCE
+        // =============================================
+
+        // Cache otimizado de elementos DOM
+        function getCachedElement(id) {
+            if (!domCache[id]) {
+                domCache[id] = document.getElementById(id);
+            }
+            return domCache[id];
+        }
+
+        // Função otimizada para atualização em lote
+        function batchUpdatePreview() {
+            requestAnimationFrame(updatePreview);
+        }
+
+        // =============================================
+        // MÓDULO DE SALVAMENTO AUTOMÁTICO
+        // =============================================
+
+        const STORAGE_KEY = 'zairis-site-editor-autosave';
+
+        // Salvar estado automaticamente
+        function autoSave() {
+            try {
+                const saveData = {
+                    siteData: siteData,
+                    currentStep: currentStep,
+                    timestamp: Date.now()
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(saveData));
+            } catch (error) {
+                console.warn('Não foi possível salvar automaticamente:', error);
+            }
+        }
+
+        // Restaurar estado salvo
+        function restoreSavedData() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    const { siteData: savedData, currentStep: savedStep } = JSON.parse(saved);
+                    
+                    // Restaurar dados principais
+                    Object.assign(siteData, savedData);
+                    
+                    // Restaurar UI
+                    restoreUIFromData();
+                    
+                    return { success: true, step: savedStep };
+                }
+            } catch (error) {
+                console.warn('Erro ao restaurar dados salvos:', error);
+            }
+            
+            return { success: false };
+        }
+
+        // Restaurar interface a partir dos dados
+        function restoreUIFromData() {
+            // Restaurar campos básicos
+            getCachedElement('pageName').value = siteData.pageName || '';
+            getCachedElement('mainTitle').value = siteData.mainTitle || '';
+            getCachedElement('mainMessage').value = siteData.mainMessage || '';
+            getCachedElement('mainMessageCount').textContent = siteData.mainMessage?.length || 0;
+            getCachedElement('url-preview').textContent = siteData.pageName || 'nossa-amizade';
+            
+            // Restaurar cores
+            getCachedElement('backgroundColorPicker').value = siteData.backgroundColor;
+            getCachedElement('backgroundColorCode').textContent = siteData.backgroundColor;
+            getCachedElement('primaryColorPicker').value = siteData.primaryColor;
+            getCachedElement('primaryColorCode').textContent = siteData.primaryColor;
+            
+            // Restaurar toggles
+            const toggleMap = {
+                'declarationsToggle': 'declarations',
+                'carouselToggle': 'carousel',
+                'plansToggle': 'plans',
+                'promisesToggle': 'promises',
+                'videoToggle': 'video',
+                'musicToggle': 'music',
+                'counterToggle': 'counter',
+                'petalsToggle': 'petals'
+            };
+            
+            Object.entries(toggleMap).forEach(([toggleId, dataKey]) => {
+                const element = getCachedElement(toggleId);
+                if (element) {
+                    element.checked = !!siteData.elements[dataKey];
+                }
+            });
+            
+            // Restaurar campos específicos
+            getCachedElement('plansTitle').value = siteData.elements.plansTitle || '';
+            getCachedElement('promisesTitle').value = siteData.elements.promisesTitle || '';
+            getCachedElement('videoUrl').value = siteData.elements.videoUrl || '';
+            getCachedElement('videoMessage').value = siteData.elements.videoMessage || '';
+            getCachedElement('musicUrl').value = siteData.elements.musicUrl || '';
+            getCachedElement('counterText').value = siteData.elements.counterText || '';
+            getCachedElement('counterDate').value = siteData.startDate || '';
+            getCachedElement('petalsEmoji').value = siteData.elements.petalsEmoji || '';
+            
+            // Restaurar componentes dinâmicos
+            updateDeclarationFields();
+            updatePlanFields();
+            updatePromiseFields();
+            updateCarouselPreview();
+            
+            // Atualizar preview
+            batchUpdatePreview();
+        }
+
+        // Limpar dados salvos
+        function clearSavedData() {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+
+        // Modal de restauração
+        function showRestoreModal() {
+            const modal = getCachedElement('restoreModal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+
+        function hideRestoreModal() {
+            const modal = getCachedElement('restoreModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // =============================================
+        // MÓDULO DE NAVEGAÇÃO OTIMIZADO
+        // =============================================
+
+        function showStep(step) {
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            const targetStep = getCachedElement(`step-${step}`);
+            if (targetStep) {
+                targetStep.classList.add('active');
+                currentStep = step;
+                updateProgressBar();
+                batchUpdatePreview();
+            }
+        }
+
+        function nextStep(step) {
+            if (validateCurrentStep()) {
+                saveCurrentStep();
+                autoSave(); // Salvar automaticamente ao avançar
+                showStep(step);
+            }
+        }
+
+        function previousStep(step) {
+            saveCurrentStep();
+            autoSave(); // Salvar automaticamente ao voltar
+            showStep(step);
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            getCachedElement('progress-fill').style.width = `${progress}%`;
+            getCachedElement('progress-percent').textContent = `${Math.round(progress)}%`;
+            getCachedElement('current-step').textContent = currentStep;
+            getCachedElement('total-steps').textContent = totalSteps;
+        }
+
+        // =============================================
+        // MÓDULO DE GERENCIAMENTO DE DADOS OTIMIZADO
+        // =============================================
+
+        function saveCurrentStep() {
+            const stepSavers = {
+                1: () => siteData.pageName = getCachedElement('pageName').value,
+                3: () => siteData.mainTitle = getCachedElement('mainTitle').value,
+                4: () => siteData.mainMessage = getCachedElement('mainMessage').value,
+                5: () => {
+                    siteData.elements.declarations = getCachedElement('declarationsToggle').checked;
+                    if (siteData.elements.declarations) {
+                        const titles = document.querySelectorAll('.declaration-title');
+                        const texts = document.querySelectorAll('.declaration-text');
+                        siteData.declarations = Array.from(titles).map((title, i) => ({
+                            title: title.value,
+                            text: texts[i]?.value || ""
+                        }));
+                    }
+                },
+                6: () => {
+                    siteData.elements.carousel = getCachedElement('carouselToggle').checked;
+                    if (siteData.elements.carousel) {
+                        validateCarouselCount();
+                    }
+                },
+                7: () => {
+                    siteData.elements.plans = getCachedElement('plansToggle').checked;
+                    siteData.elements.plansTitle = getCachedElement('plansTitle').value;
+                    if (siteData.elements.plans) {
+                        const icons = document.querySelectorAll('.plan-emoji');
+                        const titles = document.querySelectorAll('.plan-title');
+                        const texts = document.querySelectorAll('.plan-text');
+                        siteData.plans = Array.from(icons).map((icon, i) => ({
+                            icon: icon.value || "❤️",
+                            title: titles[i]?.value || "",
+                            text: texts[i]?.value || ""
+                        }));
+                    }
+                },
+                8: () => {
+                    siteData.elements.promises = getCachedElement('promisesToggle').checked;
+                    siteData.elements.promisesTitle = getCachedElement('promisesTitle').value;
+                    if (siteData.elements.promises) {
+                        const promiseInputs = document.querySelectorAll('.promise-input');
+                        siteData.promises = Array.from(promiseInputs).map(input => input.value);
+                    }
+                },
+                9: () => {
+                    siteData.elements.video = getCachedElement('videoToggle').checked;
+                    siteData.elements.videoUrl = getCachedElement('videoUrl').value;
+                    siteData.elements.videoMessage = getCachedElement('videoMessage').value;
+                    siteData.elements.music = getCachedElement('musicToggle').checked;
+                    siteData.elements.musicUrl = getCachedElement('musicUrl').value;
+                },
+                10: () => {
+                    siteData.elements.counter = getCachedElement('counterToggle').checked;
+                    siteData.elements.counterText = getCachedElement('counterText').value;
+                    siteData.startDate = getCachedElement('counterDate').value;
+                },
+                11: () => {
+                    siteData.elements.petals = getCachedElement('petalsToggle').checked;
+                    siteData.elements.petalsEmoji = getCachedElement('petalsEmoji').value;
+                }
+            };
+            
+            if (stepSavers[currentStep]) {
+                stepSavers[currentStep]();
+            }
+        }
+
+        // =============================================
+        // FUNÇÕES PARA VÍDEO E MÚSICA (OTIMIZADAS)
+        // =============================================
+
         function extractYouTubeId(url) {
             if (!url) return null;
             
-            // Remove espaços em branco
-            url = url.trim();
-            
-            // Padrões para diferentes formatos de URL do YouTube
+            const trimmedUrl = url.trim();
             const patterns = [
                 /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?#]+)/,
                 /youtube\.com\/watch\?.*v=([^&?#]+)/,
@@ -1875,7 +2311,7 @@
             ];
             
             for (const pattern of patterns) {
-                const match = url.match(pattern);
+                const match = trimmedUrl.match(pattern);
                 if (match && match[1]) {
                     return match[1];
                 }
@@ -1884,18 +2320,14 @@
             return null;
         }
 
-        // Validação visual dos URLs
         function validateVideoUrl() {
-            const videoUrl = document.getElementById('videoUrl').value;
+            const videoUrl = getCachedElement('videoUrl').value;
             const videoId = extractYouTubeId(videoUrl);
-            const videoFields = document.getElementById('videoFields');
+            const videoFields = getCachedElement('videoFields');
             
-            // Remove classes anteriores
             videoFields.classList.remove('url-valid', 'url-invalid');
             
-            if (videoUrl.trim() === '') {
-                return;
-            }
+            if (videoUrl.trim() === '') return;
             
             if (videoId) {
                 videoFields.classList.add('url-valid');
@@ -1905,16 +2337,13 @@
         }
 
         function validateMusicUrl() {
-            const musicUrl = document.getElementById('musicUrl').value;
+            const musicUrl = getCachedElement('musicUrl').value;
             const musicId = extractYouTubeId(musicUrl);
-            const musicFields = document.getElementById('musicFields');
+            const musicFields = getCachedElement('musicFields');
             
-            // Remove classes anteriores
             musicFields.classList.remove('url-valid', 'url-invalid');
             
-            if (musicUrl.trim() === '') {
-                return;
-            }
+            if (musicUrl.trim() === '') return;
             
             if (musicId) {
                 musicFields.classList.add('url-valid');
@@ -1923,257 +2352,43 @@
             }
         }
 
-        // Controle de música funcional
-        function toggleMusic() {
-            const musicPlayer = document.getElementById('music-player');
-            if (!musicPlayer) {
-                alert('🎵 Nenhuma música carregada');
-                return;
-            }
-            
-            musicIframe = musicPlayer.querySelector('iframe');
-            if (!musicIframe) {
-                alert('🎵 Player de música não encontrado');
-                return;
-            }
-            
-            try {
-                if (isMusicPlaying) {
-                    // Pausar música
-                    musicIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                    document.querySelector('.preview-music-control').innerHTML = '♪';
-                    isMusicPlaying = false;
-                } else {
-                    // Retomar música
-                    musicIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-                    document.querySelector('.preview-music-control').innerHTML = '❚❚';
-                    isMusicPlaying = true;
-                }
-            } catch (error) {
-                console.log('Controle de música requer interação do usuário primeiro');
-                alert('▶️ Clique no vídeo da música primeiro para ativar o controle');
-            }
-        }
-
         // =============================================
-        // MÓDULO DE NAVEGAÇÃO
-        // =============================================
-
-        function showStep(step) {
-            document.querySelectorAll('.step-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            const targetStep = document.getElementById(`step-${step}`);
-            if (targetStep) {
-                targetStep.classList.add('active');
-                currentStep = step;
-                updateProgressBar();
-                updatePreview();
-            }
-        }
-
-        function nextStep(step) {
-            if (validateCurrentStep()) {
-                saveCurrentStep();
-                showStep(step);
-            }
-        }
-
-        function previousStep(step) {
-            showStep(step);
-        }
-
-        function updateProgressBar() {
-            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
-            document.getElementById('progress-fill').style.width = `${progress}%`;
-            document.getElementById('progress-percent').textContent = `${Math.round(progress)}%`;
-            document.getElementById('current-step').textContent = currentStep;
-            document.getElementById('total-steps').textContent = totalSteps;
-        }
-
-        // =============================================
-        // MÓDULO DE VALIDAÇÃO
-        // =============================================
-
-        function validateCurrentStep() {
-            switch(currentStep) {
-                case 1:
-                    const pageName = document.getElementById('pageName').value.trim();
-                    if (!pageName) {
-                        document.getElementById('pageNameError').style.display = 'block';
-                        return false;
-                    }
-                    document.getElementById('pageNameError').style.display = 'none';
-                    return true;
-                    
-                case 3:
-                    const mainTitle = document.getElementById('mainTitle').value.trim();
-                    if (!mainTitle) {
-                        document.getElementById('mainTitleError').style.display = 'block';
-                        return false;
-                    }
-                    document.getElementById('mainTitleError').style.display = 'none';
-                    return true;
-                    
-                case 4:
-                    const mainMessage = document.getElementById('mainMessage').value.trim();
-                    if (!mainMessage) {
-                        document.getElementById('mainMessageError').style.display = 'block';
-                        return false;
-                    }
-                    document.getElementById('mainMessageError').style.display = 'none';
-                    return true;
-
-                case 6:
-                    if (siteData.elements.carousel && siteData.carouselImages.length < 3) {
-                        document.getElementById('carouselError').style.display = 'block';
-                        return false;
-                    }
-                    document.getElementById('carouselError').style.display = 'none';
-                    return true;
-                    
-                default:
-                    return true;
-            }
-        }
-
-        // =============================================
-        // MÓDULO DE GERENCIAMENTO DE DADOS
-        // =============================================
-
-        function saveCurrentStep() {
-            switch(currentStep) {
-                case 1:
-                    siteData.pageName = document.getElementById('pageName').value;
-                    break;
-                case 3:
-                    siteData.mainTitle = document.getElementById('mainTitle').value;
-                    break;
-                case 4:
-                    siteData.mainMessage = document.getElementById('mainMessage').value;
-                    break;
-                case 5:
-                    siteData.elements.declarations = document.getElementById('declarationsToggle').checked;
-                    if (siteData.elements.declarations) {
-                        const titles = document.querySelectorAll('.declaration-title');
-                        const texts = document.querySelectorAll('.declaration-text');
-                        siteData.declarations = [];
-                        for (let i = 0; i < titles.length; i++) {
-                            siteData.declarations.push({
-                                title: titles[i].value,
-                                text: texts[i].value
-                            });
-                        }
-                    }
-                    break;
-                case 6:
-                    siteData.elements.carousel = document.getElementById('carouselToggle').checked;
-                    // CORREÇÃO: Validar apenas se o carrossel está ativo
-                    if (siteData.elements.carousel) {
-                        validateCarouselCount();
-                    } else {
-                        document.getElementById('carouselError').style.display = 'none';
-                    }
-                    break;
-                case 7:
-                    siteData.elements.plans = document.getElementById('plansToggle').checked;
-                    siteData.elements.plansTitle = document.getElementById('plansTitle').value;
-                    if (siteData.elements.plans) {
-                        const icons = document.querySelectorAll('.plan-emoji');
-                        const titles = document.querySelectorAll('.plan-title');
-                        const texts = document.querySelectorAll('.plan-text');
-                        siteData.plans = [];
-                        for (let i = 0; i < icons.length; i++) {
-                            siteData.plans.push({
-                                icon: icons[i].value || "❤️",
-                                title: titles[i].value,
-                                text: texts[i].value
-                            });
-                        }
-                    }
-                    break;
-                case 8:
-                    siteData.elements.promises = document.getElementById('promisesToggle').checked;
-                    siteData.elements.promisesTitle = document.getElementById('promisesTitle').value;
-                    if (siteData.elements.promises) {
-                        const promiseInputs = document.querySelectorAll('.promise-input');
-                        siteData.promises = [];
-                        promiseInputs.forEach(input => {
-                            if (input.value.trim()) {
-                                siteData.promises.push(input.value);
-                            }
-                        });
-                    }
-                    break;
-                case 9:
-                    siteData.elements.video = document.getElementById('videoToggle').checked;
-                    siteData.elements.videoUrl = document.getElementById('videoUrl').value;
-                    siteData.elements.videoMessage = document.getElementById('videoMessage').value;
-                    siteData.elements.music = document.getElementById('musicToggle').checked;
-                    siteData.elements.musicUrl = document.getElementById('musicUrl').value;
-                    break;
-                case 10:
-                    siteData.elements.counter = document.getElementById('counterToggle').checked;
-                    siteData.elements.counterText = document.getElementById('counterText').value;
-                    siteData.startDate = document.getElementById('counterDate').value;
-                    break;
-                case 11:
-                    siteData.elements.petals = document.getElementById('petalsToggle').checked;
-                    siteData.elements.petalsEmoji = document.getElementById('petalsEmoji').value;
-                    break;
-            }
-        }
-
-        // =============================================
-        // MÓDULO CORRIGIDO: UPLOAD MÚLTIPLO DE IMAGENS
+        // MÓDULO DE UPLOAD DE IMAGENS (OTIMIZADO)
         // =============================================
 
         function handleMultipleImageUpload(event) {
             const files = event.target.files;
-            
-            // CORREÇÃO: Não validar quantidade mínima aqui, apenas somar às existentes
             if (files.length === 0) return;
             
-            // CORREÇÃO: Processar cada arquivo e SOMAR às imagens existentes
             Array.from(files).forEach((file) => {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    // CORREÇÃO: Adicionar à lista existente, não substituir
                     siteData.carouselImages.push(e.target.result);
-                    
-                    // Atualizar preview quando a imagem atual for carregada
                     updateCarouselPreview();
-                    updatePreview();
-                    
-                    // CORREÇÃO: Validar quantidade total após adicionar
+                    batchUpdatePreview();
                     validateCarouselCount();
                 };
                 reader.readAsDataURL(file);
             });
             
-            // CORREÇÃO: Resetar o input para permitir novos uploads
             event.target.value = "";
         }
 
         function validateCarouselCount() {
-            // CORREÇÃO: Validar apenas se o carrossel está ativo
             if (siteData.elements.carousel) {
+                const carouselError = getCachedElement('carouselError');
                 if (siteData.carouselImages.length < 3) {
-                    document.getElementById('carouselError').style.display = 'block';
+                    showValidationError(carouselError);
                 } else {
-                    document.getElementById('carouselError').style.display = 'none';
+                    hideValidationError(carouselError);
                 }
             }
         }
 
         function updateCarouselPreview() {
-            const previewGrid = document.getElementById('carouselPreviewGrid');
-            
-            // CORREÇÃO: Manter o botão de adicionar sempre visível
+            const previewGrid = getCachedElement('carouselPreviewGrid');
             previewGrid.innerHTML = '';
             
-            // Adicionar preview das imagens existentes com botão de remover
             siteData.carouselImages.forEach((imgSrc, index) => {
                 const thumbContainer = document.createElement('div');
                 thumbContainer.style.position = 'relative';
@@ -2186,7 +2401,7 @@
                 const removeBtn = document.createElement('button');
                 removeBtn.className = 'remove-image-btn';
                 removeBtn.innerHTML = '<i class="fas fa-times"></i>';
-                removeBtn.onclick = function(e) {
+                removeBtn.onclick = (e) => {
                     e.stopPropagation();
                     removeCarouselImage(index);
                 };
@@ -2196,48 +2411,210 @@
                 previewGrid.appendChild(thumbContainer);
             });
             
-            // CORREÇÃO: Botão de adicionar SEMPRE aparece no final
             const addBtn = document.createElement('div');
             addBtn.className = 'add-image-btn';
             addBtn.innerHTML = '<i class="fas fa-plus"></i>';
-            addBtn.onclick = function() {
-                document.getElementById('carouselMultipleInput').click();
-            };
+            addBtn.onclick = () => getCachedElement('carouselMultipleInput').click();
             previewGrid.appendChild(addBtn);
         }
 
         function removeCarouselImage(index) {
-            // CORREÇÃO: Remover apenas a imagem específica
             siteData.carouselImages.splice(index, 1);
             updateCarouselPreview();
-            updatePreview();
-            
-            // CORREÇÃO: Validar quantidade após remover
+            batchUpdatePreview();
             validateCarouselCount();
         }
 
-
-
         // =============================================
-        // FUNÇÃO AUXILIAR PARA RECARREGAR IFRAMES
+        // MÓDULO DE CAMPOS DINÂMICOS (OTIMIZADO)
         // =============================================
 
-        function reloadVideoIframes() {
-            const videoIframes = document.querySelectorAll('.video-wrapper iframe');
-            videoIframes.forEach(iframe => {
-                const src = iframe.src;
-                iframe.src = '';
-                setTimeout(() => {
-                    iframe.src = src;
-                }, 100);
-            });
+        function updateDeclarationFields() {
+            const container = getCachedElement('declarationFieldsContainer');
+            const count = siteData.elements.declarationsCount;
+            
+            container.innerHTML = '';
+            
+            for (let i = 0; i < count; i++) {
+                const existingData = siteData.declarations[i] || { title: "", text: "" };
+                
+                container.innerHTML += `
+                    <div class="field-group">
+                        <h4>Declaração ${i+1}</h4>
+                        <div class="form-group">
+                            <label>Título</label>
+                            <input type="text" class="form-control declaration-title" value="${existingData.title}" placeholder="Título da declaração..." maxlength="30" oninput="handleDeclarationChange()">
+                        </div>
+                        <div class="form-group">
+                            <label>Texto</label>
+                            <textarea class="form-control declaration-text" placeholder="Escreva sua declaração de amor aqui..." maxlength="300" oninput="handleDeclarationChange()">${existingData.text}</textarea>
+                            <small style="color: #666;">Máximo 300 caracteres</small>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function handleDeclarationChange() {
+            const titles = document.querySelectorAll('.declaration-title');
+            const texts = document.querySelectorAll('.declaration-text');
+            siteData.declarations = Array.from(titles).map((title, i) => ({
+                title: title.value,
+                text: texts[i]?.value || ""
+            }));
+            batchUpdatePreview();
+        }
+
+        function updatePlanFields() {
+            const container = getCachedElement('plansContainer');
+            const count = siteData.elements.plansCount;
+            
+            container.innerHTML = '';
+            
+            for (let i = 0; i < count; i++) {
+                const existingData = siteData.plans[i] || { icon: "❤️", title: "", text: "" };
+                
+                container.innerHTML += `
+                    <div class="field-group">
+                        <h4>Plano ${i+1}</h4>
+                        <div class="form-group">
+                            <label>Emoji</label>
+                            <input type="text" class="form-control plan-emoji emoji-input" value="${existingData.icon}" maxlength="2" oninput="handlePlanChange()">
+                        </div>
+                        <div class="form-group">
+                            <label>Título</label>
+                            <input type="text" class="form-control plan-title" value="${existingData.title}" placeholder="Título do plano..." maxlength="20" oninput="handlePlanChange()">
+                        </div>
+                        <div class="form-group">
+                            <label>Descrição</label>
+                            <textarea class="form-control plan-text" placeholder="Descreva seu plano especial..." maxlength="200" oninput="handlePlanChange()">${existingData.text}</textarea>
+                            <small style="color: #666;">Máximo 200 caracteres</small>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function handlePlanChange() {
+            const icons = document.querySelectorAll('.plan-emoji');
+            const titles = document.querySelectorAll('.plan-title');
+            const texts = document.querySelectorAll('.plan-text');
+            siteData.plans = Array.from(icons).map((icon, i) => ({
+                icon: icon.value || "❤️",
+                title: titles[i]?.value || "",
+                text: texts[i]?.value || ""
+            }));
+            batchUpdatePreview();
         }
 
         // =============================================
-        // MÓDULO DE PREVIEW - updatePreview() - CORRIGIDO
+        // CONTROLE DE PROMESSAS COM LIMITE
         // =============================================
 
+        const MAX_PROMISES = 10;
+        let currentPromisesCount = 0;
+
+        function addPromise() {
+            if (currentPromisesCount >= MAX_PROMISES) {
+                alert(`❌ Limite máximo de ${MAX_PROMISES} promessas atingido!`);
+                return;
+            }
+            
+            siteData.promises.push("");
+            currentPromisesCount++;
+            updatePromiseFields();
+            updatePromiseCounter();
+            batchUpdatePreview();
+            autoSave(); // ← Importante salvar automaticamente
+        }
+
+        function removePromise(index) {
+            siteData.promises.splice(index, 1);
+            currentPromisesCount--;
+            updatePromiseFields();
+            updatePromiseCounter();
+            batchUpdatePreview();
+            autoSave(); // ← Importante salvar automaticamente
+        }
+
+        function updatePromiseCounter() {
+            const counter = document.getElementById('promiseCounter');
+            const addButton = document.getElementById('addPromiseBtn');
+            
+            if (counter) {
+                counter.textContent = `(${currentPromisesCount}/${MAX_PROMISES})`;
+            }
+            
+            // Desabilitar botão se atingiu o limite
+            if (addButton) {
+                addButton.disabled = currentPromisesCount >= MAX_PROMISES;
+                if (addButton.disabled) {
+                    addButton.style.opacity = '0.6';
+                    addButton.style.cursor = 'not-allowed';
+                } else {
+                    addButton.style.opacity = '1';
+                    addButton.style.cursor = 'pointer';
+                }
+            }
+        }
+
+        function updatePromiseFields() {
+            const container = getCachedElement('promisesContainer');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            siteData.promises.forEach((promise, index) => {
+                container.innerHTML += `
+                    <div class="promise-item-editor">
+                        <input type="text" class="form-control promise-input" 
+                            value="${promise}" 
+                            placeholder="Digite uma promessa..." 
+                            maxlength="60" 
+                            oninput="handlePromiseChange()">
+                        <button type="button" class="remove-btn" onclick="removePromise(${index})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+            });
+            
+            // Atualizar contador após renderizar
+            currentPromisesCount = siteData.promises.length;
+            updatePromiseCounter();
+        }
+
+        function handlePromiseChange() {
+            const promiseInputs = document.querySelectorAll('.promise-input');
+            siteData.promises = Array.from(promiseInputs).map(input => input.value);
+            batchUpdatePreview();
+            autoSave(); // ← Importante salvar automaticamente
+        }
+        // =============================================
+        // FUNÇÕES ORIGINAIS MANTIDAS (RESUMO)
+        // =============================================
+
+        // Funções originais mantidas para funcionalidade completa
+        function handleImageUpload(event, type) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (type === 'mainImage') {
+                        siteData.mainImage = e.target.result;
+                        document.getElementById('mainImagePreview').src = siteData.mainImage;
+                        document.getElementById('mainImagePreview').style.display = 'block';
+                        batchUpdatePreview();
+                        autoSave();
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
         function updatePreview() {
+            // SUA FUNÇÃO updatePreview ORIGINAL AQUI
+            // Mantida intacta para preservar funcionalidades
             const screen = document.getElementById('phoneScreen');
             
             // CALCULA CORES SECUNDÁRIAS BASEADO NA COR PRIMÁRIA
@@ -2454,107 +2831,66 @@
             togglePetalsEffect();
         }
 
-        // =============================================
-        // NOVO: FUNÇÕES PARA CONTADOR DE TEMPO
-        // =============================================
-
-        function updateSimpleCounter() {
-            if (!siteData.startDate) return;
-            
-            const startDate = new Date(siteData.startDate);
-            const now = new Date();
-            
-            let years = now.getFullYear() - startDate.getFullYear();
-            let months = now.getMonth() - startDate.getMonth();
-            let days = now.getDate() - startDate.getDate();
-            
-            if (days < 0) {
-                months--;
-                days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+        function calculateSecondaryColor(primaryColor) {
+            // Se for preto ou cores muito escuras, usa tons cinza
+            if (primaryColor === '#000000' || primaryColor === '#000') {
+                return { 
+                    secondary: '#333333', 
+                    light: '#ffb6c1'
+                };
+            }
+            if (primaryColor === '#333333') {
+                return { 
+                    secondary: '#555555', 
+                    light: '#ffb6c1' 
+                };
             }
             
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-            
-            // Atualizar elementos no preview se existirem
-            const yearsElement = document.getElementById('simple-years');
-            const monthsElement = document.getElementById('simple-months');
-            const daysElement = document.getElementById('simple-days');
-            
-            if (yearsElement) yearsElement.textContent = years;
-            if (monthsElement) monthsElement.textContent = months;
-            if (daysElement) daysElement.textContent = days;
-        }
-
-        // =============================================
-        // NOVO: FUNÇÕES PARA EFEITO DE PÉTALAS
-        // =============================================
-
-        function createPetal() {
-            if (!siteData.elements.petals) return;
-            
-            const screen = document.getElementById('phoneScreen');
-            if (!screen) return;
-            
-            const petal = document.createElement('div');
-            petal.innerHTML = siteData.elements.petalsEmoji || '🌸';
-            petal.style.position = 'absolute';
-            petal.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            petal.style.left = Math.random() * 100 + '%';
-            petal.style.top = '-50px';
-            petal.style.opacity = Math.random() * 0.7 + 0.3;
-            petal.style.animation = `fall ${Math.random() * 5 + 5}s linear infinite`;
-            petal.style.zIndex = '1';
-            petal.style.pointerEvents = 'none';
-            
-            screen.appendChild(petal);
-            
-            setTimeout(() => {
-                if (petal.parentNode) {
-                    petal.parentNode.removeChild(petal);
+            // Para cores hex, calcula cores mais claras
+            try {
+                const hex = primaryColor.replace('#', '');
+                if (hex.length === 3) {
+                    // Converte #abc para #aabbcc
+                    const r = parseInt(hex[0] + hex[0], 16);
+                    const g = parseInt(hex[1] + hex[1], 16);
+                    const b = parseInt(hex[2] + hex[2], 16);
+                    
+                    const secondaryR = Math.min(255, r + 40);
+                    const secondaryG = Math.min(255, g + 40);
+                    const secondaryB = Math.min(255, b + 40);
+                    
+                    return {
+                        secondary: `rgb(${secondaryR}, ${secondaryG}, ${secondaryB})`,
+                        light: `rgb(${Math.min(255, r + 80)}, ${Math.min(255, g + 80)}, ${Math.min(255, b + 80)})`
+                    };
+                } else if (hex.length === 6) {
+                    const r = parseInt(hex.substr(0, 2), 16);
+                    const g = parseInt(hex.substr(2, 2), 16);
+                    const b = parseInt(hex.substr(4, 2), 16);
+                    
+                    const secondaryR = Math.min(255, r + 40);
+                    const secondaryG = Math.min(255, g + 40);
+                    const secondaryB = Math.min(255, b + 40);
+                    
+                    const lightR = Math.min(255, r + 80);
+                    const lightG = Math.min(255, g + 80);
+                    const lightB = Math.min(255, b + 80);
+                    
+                    return {
+                        secondary: `rgb(${secondaryR}, ${secondaryG}, ${secondaryB})`,
+                        light: `rgb(${lightR}, ${lightG}, ${lightB})`
+                    };
                 }
-            }, 4000);
+            } catch (e) {
+                console.error('Erro ao calcular cor:', e);
+            }
+            
+            // Fallback para cores que não conseguimos calcular
+            return { 
+                secondary: '#ff6b81', 
+                light: '#ffb6c1' 
+            };
         }
-
-        function togglePetalsEffect() {
-            // Limpar intervalo anterior
-            if (petalsInterval) {
-                clearInterval(petalsInterval);
-                petalsInterval = null;
-            }
-            
-            // Remover pétalas existentes
-            const screen = document.getElementById('phoneScreen');
-            if (screen) {
-                const existingPetals = screen.querySelectorAll('div[style*="animation: fall"]');
-                existingPetals.forEach(petal => petal.remove());
-            }
-            
-            // Adicionar estilo CSS para animação se não existir
-            if (!document.getElementById('petals-style')) {
-                const style = document.createElement('style');
-                style.id = 'petals-style';
-                style.innerHTML = `
-                    @keyframes fall {
-                        to {
-                            transform: translateY(800px) rotate(360deg);
-                        }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-            
-            // Iniciar novo intervalo se o efeito estiver ativo
-            if (siteData.elements.petals) {
-                petalsInterval = setInterval(createPetal, 500);
-            }
-        }
-
-        // =============================================
-        // FUNÇÕES AUXILIARES
-        // =============================================
 
         function calculateTimeTogether() {
             if (!siteData.startDate) return { years: 0, months: 0, days: 0 };
@@ -2619,422 +2955,140 @@
             });
         }
 
-        // =============================================
-        // MANIPULAÇÃO DE IMAGENS - CORRIGIDO
-        // =============================================
+        function toggleMusic() {
+            const musicPlayer = document.getElementById('music-player');
+            if (!musicPlayer) {
+                alert('🎵 Nenhuma música carregada');
+                return;
+            }
+            
+            musicIframe = musicPlayer.querySelector('iframe');
+            if (!musicIframe) {
+                alert('🎵 Player de música não encontrado');
+                return;
+            }
+            
+            try {
+                if (isMusicPlaying) {
+                    // Pausar música
+                    musicIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                    document.querySelector('.preview-music-control').innerHTML = '♪';
+                    isMusicPlaying = false;
+                } else {
+                    // Retomar música
+                    musicIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                    document.querySelector('.preview-music-control').innerHTML = '❚❚';
+                    isMusicPlaying = true;
+                }
+            } catch (error) {
+                console.log('Controle de música requer interação do usuário primeiro');
+                alert('▶️ Clique no vídeo da música primeiro para ativar o controle');
+            }
+        }
 
-        function handleImageUpload(event, type) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    if (type === 'mainImage') {
-                        siteData.mainImage = e.target.result;
-                        document.getElementById('mainImagePreview').src = siteData.mainImage;
-                        document.getElementById('mainImagePreview').style.display = 'block';
-                        // ATUALIZAÇÃO IMEDIATA DO PREVIEW
-                        updatePreview();
+        function updateSimpleCounter() {
+            if (!siteData.startDate) return;
+            
+            const startDate = new Date(siteData.startDate);
+            const now = new Date();
+            
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
+            let days = now.getDate() - startDate.getDate();
+            
+            if (days < 0) {
+                months--;
+                days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+            }
+            
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            // Atualizar elementos no preview se existirem
+            const yearsElement = document.getElementById('simple-years');
+            const monthsElement = document.getElementById('simple-months');
+            const daysElement = document.getElementById('simple-days');
+            
+            if (yearsElement) yearsElement.textContent = years;
+            if (monthsElement) monthsElement.textContent = months;
+            if (daysElement) daysElement.textContent = days;
+        }
+
+        function createPetal() {
+            if (!siteData.elements.petals) return;
+            
+            const screen = document.getElementById('phoneScreen');
+            if (!screen) return;
+            
+            const petal = document.createElement('div');
+            petal.innerHTML = siteData.elements.petalsEmoji || '🌸';
+            petal.style.position = 'absolute';
+            petal.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.top = '-50px';
+            petal.style.opacity = Math.random() * 0.7 + 0.3;
+            petal.style.animation = `fall ${Math.random() * 5 + 5}s linear infinite`;
+            petal.style.zIndex = '1';
+            petal.style.pointerEvents = 'none';
+            
+            screen.appendChild(petal);
+            
+            setTimeout(() => {
+                if (petal.parentNode) {
+                    petal.parentNode.removeChild(petal);
+                }
+            }, 4000);
+        }
+
+        function togglePetalsEffect() {
+            // Limpar intervalo anterior
+            if (petalsInterval) {
+                clearInterval(petalsInterval);
+                petalsInterval = null;
+            }
+            
+            // Remover pétalas existentes
+            const screen = document.getElementById('phoneScreen');
+            if (screen) {
+                const existingPetals = screen.querySelectorAll('div[style*="animation: fall"]');
+                existingPetals.forEach(petal => petal.remove());
+            }
+            
+            // Adicionar estilo CSS para animação se não existir
+            if (!document.getElementById('petals-style')) {
+                const style = document.createElement('style');
+                style.id = 'petals-style';
+                style.innerHTML = `
+                    @keyframes fall {
+                        to {
+                            transform: translateY(800px) rotate(360deg);
+                        }
                     }
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // =============================================
-        // MANIPULAÇÃO DE CAMPOS DINÂMICOS - CORRIGIDO
-        // =============================================
-
-        function updateDeclarationFields() {
-            const container = document.getElementById('declarationFieldsContainer');
-            const count = siteData.elements.declarationsCount;
-            
-            container.innerHTML = '';
-            
-            for (let i = 0; i < count; i++) {
-                const existingData = siteData.declarations[i] || { title: "", text: "" };
-                
-                container.innerHTML += `
-                    <div class="field-group">
-                        <h4>Declaração ${i+1}</h4>
-                        <div class="form-group">
-                            <label>Título</label>
-                            <input type="text" class="form-control declaration-title" value="${existingData.title}" placeholder="Título da declaração..." maxlength="30" oninput="handleDeclarationChange()">
-                        </div>
-                        <div class="form-group">
-                            <label>Texto</label>
-                            <textarea class="form-control declaration-text" placeholder="Escreva sua declaração de amor aqui..." maxlength="200" oninput="handleDeclarationChange()">${existingData.text}</textarea>
-                            <small style="color: #666;">Máximo 200 caracteres</small>
-                        </div>
-                    </div>
                 `;
-            }
-        }
-
-        function handleDeclarationChange() {
-            const titles = document.querySelectorAll('.declaration-title');
-            const texts = document.querySelectorAll('.declaration-text');
-            siteData.declarations = [];
-            for (let i = 0; i < titles.length; i++) {
-                siteData.declarations.push({
-                    title: titles[i].value,
-                    text: texts[i].value
-                });
-            }
-            updatePreview();
-        }
-
-        function updatePlanFields() {
-            const container = document.getElementById('plansContainer');
-            const count = siteData.elements.plansCount;
-            
-            container.innerHTML = '';
-            
-            for (let i = 0; i < count; i++) {
-                const existingData = siteData.plans[i] || { icon: "❤️", title: "", text: "" };
-                
-                container.innerHTML += `
-                    <div class="field-group">
-                        <h4>Plano ${i+1}</h4>
-                        <div class="form-group">
-                            <label>Emoji</label>
-                            <input type="text" class="form-control plan-emoji emoji-input" value="${existingData.icon}" maxlength="2" oninput="handlePlanChange()">
-                        </div>
-                        <div class="form-group">
-                            <label>Título</label>
-                            <input type="text" class="form-control plan-title" value="${existingData.title}" placeholder="Título do plano..." maxlength="20" oninput="handlePlanChange()">
-                        </div>
-                        <div class="form-group">
-                            <label>Descrição</label>
-                            <textarea class="form-control plan-text" placeholder="Descreva seu plano especial..." maxlength="100" oninput="handlePlanChange()">${existingData.text}</textarea>
-                            <small style="color: #666;">Máximo 100 caracteres</small>
-                        </div>
-                    </div>
-                `;
-            }
-        }
-
-        function handlePlanChange() {
-            const icons = document.querySelectorAll('.plan-emoji');
-            const titles = document.querySelectorAll('.plan-title');
-            const texts = document.querySelectorAll('.plan-text');
-            siteData.plans = [];
-            for (let i = 0; i < icons.length; i++) {
-                siteData.plans.push({
-                    icon: icons[i].value || "❤️",
-                    title: titles[i].value,
-                    text: texts[i].value
-                });
-            }
-            updatePreview();
-        }
-
-        function addPromise() {
-            siteData.promises.push("");
-            updatePromiseFields();
-            updatePreview();
-        }
-
-        function removePromise(index) {
-            siteData.promises.splice(index, 1);
-            updatePromiseFields();
-            updatePreview();
-        }
-
-        function updatePromiseFields() {
-            const container = document.getElementById('promisesContainer');
-            container.innerHTML = '';
-            
-            siteData.promises.forEach((promise, index) => {
-                container.innerHTML += `
-                    <div class="promise-item-editor">
-                        <input type="text" class="form-control promise-input" value="${promise}" placeholder="Digite uma promessa..." maxlength="60" oninput="handlePromiseChange()">
-                        <button type="button" class="remove-btn" onclick="removePromise(${index})">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                `;
-            });
-        }
-
-        function handlePromiseChange() {
-            const promiseInputs = document.querySelectorAll('.promise-input');
-            siteData.promises = [];
-            promiseInputs.forEach(input => {
-                siteData.promises.push(input.value);
-            });
-            updatePreview();
-        }
-
-        // =============================================
-        // EVENT LISTENERS E INICIALIZAÇÃO - ATUALIZADO
-        // =============================================
-
-        // Upload de imagem principal - AGORA ATUALIZA IMEDIATAMENTE
-        document.getElementById('mainImageUpload').addEventListener('click', () => {
-            document.getElementById('mainImageInput').click();
-        });
-
-        document.getElementById('mainImageInput').addEventListener('change', function(e) {
-            handleImageUpload(e, 'mainImage');
-        });
-
-        // Upload múltiplo para carrossel - CORRIGIDO
-        document.getElementById('carouselMultipleUpload').addEventListener('click', () => {
-            document.getElementById('carouselMultipleInput').click();
-        });
-
-        document.getElementById('carouselMultipleInput').addEventListener('change', handleMultipleImageUpload);
-
-        // Toggle do carrossel - CORRIGIDO
-        document.getElementById('carouselToggle').addEventListener('change', function() {
-            siteData.elements.carousel = this.checked;
-            
-            // CORREÇÃO: Mostrar/ocultar erro baseado no estado do toggle e quantidade
-            if (this.checked) {
-                validateCarouselCount();
-            } else {
-                document.getElementById('carouselError').style.display = 'none';
+                document.head.appendChild(style);
             }
             
-            updatePreview();
-        });
-
-        // Seleção de cores
+            // Iniciar novo intervalo se o efeito estiver ativo
+            if (siteData.elements.petals) {
+                petalsInterval = setInterval(createPetal, 500);
+            }
+        }
 
         function updateBackgroundColor(color) {
             siteData.backgroundColor = color;
             document.getElementById('backgroundColorCode').textContent = color;
-            updatePreview();
+            batchUpdatePreview();
+            autoSave();
         }
 
         function updatePrimaryColor(color) {
             siteData.primaryColor = color;
             document.getElementById('primaryColorCode').textContent = color;
-            updatePreview();
+            batchUpdatePreview();
+            autoSave();
         }
-        
-
-        // =============================================
-        // FUNÇÃO CALCULATE SECONDARY COLOR CORRIGIDA
-        // =============================================
-
-        function calculateSecondaryColor(primaryColor) {
-            // Se for preto ou cores muito escuras, usa tons cinza
-            if (primaryColor === '#000000' || primaryColor === '#000') {
-                return { 
-                    secondary: '#333333', 
-                    light: '#ffb6c1' // Mantém rosa claro como fallback
-                };
-            }
-            if (primaryColor === '#333333') {
-                return { 
-                    secondary: '#555555', 
-                    light: '#ffb6c1' 
-                };
-            }
-            
-            // Para cores hex, calcula cores mais claras
-            try {
-                const hex = primaryColor.replace('#', '');
-                if (hex.length === 3) {
-                    // Converte #abc para #aabbcc
-                    const r = parseInt(hex[0] + hex[0], 16);
-                    const g = parseInt(hex[1] + hex[1], 16);
-                    const b = parseInt(hex[2] + hex[2], 16);
-                    
-                    const secondaryR = Math.min(255, r + 40);
-                    const secondaryG = Math.min(255, g + 40);
-                    const secondaryB = Math.min(255, b + 40);
-                    
-                    return {
-                        secondary: `rgb(${secondaryR}, ${secondaryG}, ${secondaryB})`,
-                        light: `rgb(${Math.min(255, r + 80)}, ${Math.min(255, g + 80)}, ${Math.min(255, b + 80)})`
-                    };
-                } else if (hex.length === 6) {
-                    const r = parseInt(hex.substr(0, 2), 16);
-                    const g = parseInt(hex.substr(2, 2), 16);
-                    const b = parseInt(hex.substr(4, 2), 16);
-                    
-                    const secondaryR = Math.min(255, r + 40);
-                    const secondaryG = Math.min(255, g + 40);
-                    const secondaryB = Math.min(255, b + 40);
-                    
-                    const lightR = Math.min(255, r + 80);
-                    const lightG = Math.min(255, g + 80);
-                    const lightB = Math.min(255, b + 80);
-                    
-                    return {
-                        secondary: `rgb(${secondaryR}, ${secondaryG}, ${secondaryB})`,
-                        light: `rgb(${lightR}, ${lightG}, ${lightB})`
-                    };
-                }
-            } catch (e) {
-                console.error('Erro ao calcular cor:', e);
-            }
-            
-            // Fallback para cores que não conseguimos calcular
-            return { 
-                secondary: '#ff6b81', 
-                light: '#ffb6c1' 
-            };
-        }
-
-
-        document.querySelectorAll('.color-option').forEach(option => {
-            option.addEventListener('click', function() {
-                const color = this.getAttribute('data-color');
-                const isBackground = color.startsWith('#ee') || color.startsWith('#f8') || color.startsWith('#ff') || color.startsWith('#fc') || color.startsWith('#e1') || color.startsWith('#d1') || color.startsWith('#c5') || color.startsWith('#bb');
-                
-                if (isBackground) {
-                    document.querySelectorAll('.color-option').forEach(opt => {
-                        if (opt.getAttribute('data-color').startsWith('#ee') || opt.getAttribute('data-color').startsWith('#f8') || opt.getAttribute('data-color').startsWith('#ff') || opt.getAttribute('data-color').startsWith('#fc') || opt.getAttribute('data-color').startsWith('#e1') || opt.getAttribute('data-color').startsWith('#d1') || opt.getAttribute('data-color').startsWith('#c5') || opt.getAttribute('data-color').startsWith('#bb')) {
-                            opt.classList.remove('selected');
-                        }
-                    });
-                    siteData.backgroundColor = color;
-                } else {
-                    document.querySelectorAll('.color-option').forEach(opt => {
-                        if (!opt.getAttribute('data-color').startsWith('#ee') && !opt.getAttribute('data-color').startsWith('#f8') && !opt.getAttribute('data-color').startsWith('#ff') && !opt.getAttribute('data-color').startsWith('#fc') && !opt.getAttribute('data-color').startsWith('#e1') && !opt.getAttribute('data-color').startsWith('#d1') && !opt.getAttribute('data-color').startsWith('#c5') && !opt.getAttribute('data-color').startsWith('#bb')) {
-                            opt.classList.remove('selected');
-                        }
-                    });
-                    siteData.primaryColor = color;
-                }
-                
-                this.classList.add('selected');
-                updatePreview();
-            });
-        });
-
-        // Controles de quantidade
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('counter-btn')) {
-                const container = e.target.closest('.counter-controls');
-                const count = parseInt(e.target.dataset.count);
-                const section = container.closest('.optional-section');
-                const type = section.querySelector('label').textContent.trim();
-                
-                container.querySelectorAll('.counter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                e.target.classList.add('active');
-                
-                if (type.includes('Declarações')) {
-                    siteData.elements.declarationsCount = count;
-                    updateDeclarationFields();
-                } else if (type.includes('Planos')) {
-                    siteData.elements.plansCount = count;
-                    updatePlanFields();
-                }
-                
-                updatePreview();
-            }
-        });
-
-        // Event listeners para atualização em tempo real - ATUALIZADOS
-        document.getElementById('pageName').addEventListener('input', function() {
-            siteData.pageName = this.value.toLowerCase().replace(/[^a-z0-9-]/g, '-');
-            document.getElementById('url-preview').textContent = siteData.pageName;
-            updatePreview();
-        });
-
-        document.getElementById('mainTitle').addEventListener('input', function() {
-            siteData.mainTitle = this.value;
-            updatePreview();
-        });
-
-        document.getElementById('mainMessage').addEventListener('input', function() {
-            siteData.mainMessage = this.value;
-            document.getElementById('mainMessageCount').textContent = this.value.length;
-            updatePreview();
-        });
-
-        document.getElementById('plansTitle').addEventListener('input', function() {
-            siteData.elements.plansTitle = this.value;
-            updatePreview();
-        });
-
-        document.getElementById('promisesTitle').addEventListener('input', function() {
-            siteData.elements.promisesTitle = this.value;
-            updatePreview();
-        });
-
-        // Event listeners para contador de tempo
-        document.getElementById('counterText').addEventListener('input', function() {
-            siteData.elements.counterText = this.value;
-            updatePreview();
-        });
-
-        document.getElementById('counterDate').addEventListener('change', function() {
-            siteData.startDate = this.value;
-            updatePreview();
-        });
-
-        // Validação em tempo real do vídeo
-        document.getElementById('videoUrl').addEventListener('input', function() {
-            siteData.elements.videoUrl = this.value;
-            validateVideoUrl();
-            updatePreview();
-        });
-
-        document.getElementById('videoMessage').addEventListener('input', function() {
-            siteData.elements.videoMessage = this.value;
-            updatePreview();
-        });
-
-        // Validação em tempo real da música
-        document.getElementById('musicUrl').addEventListener('input', function() {
-            siteData.elements.musicUrl = this.value;
-            validateMusicUrl();
-            updatePreview();
-        });
-
-        // Event listeners para efeito de pétalas
-        document.getElementById('petalsEmoji').addEventListener('input', function() {
-            siteData.elements.petalsEmoji = this.value;
-            updatePreview();
-        });
-
-        // Toggles em tempo real - ATUALIZADOS
-        const toggles = [
-            'declarationsToggle', 'carouselToggle', 
-            'plansToggle', 'promisesToggle', 'videoToggle', 'musicToggle',
-            'counterToggle', 'petalsToggle'
-        ];
-        
-        toggles.forEach(toggleId => {
-            const element = document.getElementById(toggleId);
-            if (element) {
-                element.addEventListener('change', function() {
-                    const elementKey = toggleId.replace('Toggle', '');
-                    siteData.elements[elementKey] = this.checked;
-                    // ATUALIZAÇÃO IMEDIATA
-                    updatePreview();
-                });
-            }
-        });
-
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            showStep(1);
-            updateDeclarationFields();
-            updatePlanFields();
-            updatePromiseFields();
-            updateProgressBar();
-            updatePreview();
-            document.getElementById('mainMessageCount').textContent = siteData.mainMessage.length;
-            
-            // Iniciar atualização do contador em tempo real
-            setInterval(updateSimpleCounter, 1000);
-            
-            // Inicializar validação dos URLs
-            validateVideoUrl();
-            validateMusicUrl();
-        });
-
-        // =============================================
-        // MÓDULO DE SUBMISSÃO - handleSubmit()
-        // =============================================
 
         function handleSubmit() {
             try {
@@ -3063,6 +3117,9 @@
 
                 localStorage.setItem(siteId, JSON.stringify(siteToSave));
                 localStorage.setItem('lastCreatedSite', siteId);
+
+                // Limpar dados de autosave após finalização
+                clearSavedData();
 
                 setTimeout(() => {
                     const mensagemSucesso = `🎉 Site salvo com sucesso!\n\n🔗 Link simulado: zairis.com/${siteData.pageName}\n\n📱 Dados salvos localmente para desenvolvimento.\n\n💡 Em produção, isso enviaria para o servidor.`;
@@ -3094,6 +3151,221 @@
                 }
             }
         }
+
+        // =============================================
+        // EVENT LISTENERS OTIMIZADOS
+        // =============================================
+
+        // Inicialização otimizada
+        function initializeEventListeners() {
+            // Upload de imagens
+            getCachedElement('mainImageUpload').addEventListener('click', () => {
+                getCachedElement('mainImageInput').click();
+            });
+
+            getCachedElement('mainImageInput').addEventListener('change', function(e) {
+                handleImageUpload(e, 'mainImage');
+            });
+
+            getCachedElement('carouselMultipleUpload').addEventListener('click', () => {
+                getCachedElement('carouselMultipleInput').click();
+            });
+
+            getCachedElement('carouselMultipleInput').addEventListener('change', handleMultipleImageUpload);
+
+            // Validação em tempo real para campos obrigatórios
+            const requiredFields = [
+                { input: 'pageName', error: 'pageNameError' },
+                { input: 'mainTitle', error: 'mainTitleError' },
+                { input: 'mainMessage', error: 'mainMessageError' }
+            ];
+
+            requiredFields.forEach(({ input, error }) => {
+                const inputElement = getCachedElement(input);
+                const errorElement = getCachedElement(error);
+                
+                if (inputElement && errorElement) {
+                    inputElement.addEventListener('input', () => {
+                        validateRequiredField(inputElement, errorElement);
+                        // Salvar automaticamente ao digitar
+                        autoSave();
+                    });
+                    
+                    // Adicionar validação ao perder o foco também
+                    inputElement.addEventListener('blur', () => {
+                        validateRequiredField(inputElement, errorElement);
+                    });
+                }
+            });
+
+            // Outros event listeners
+            const eventHandlers = {
+                'pageName': function() {
+                    siteData.pageName = this.value.toLowerCase().replace(/[^a-z0-9-]/g, '-');
+                    getCachedElement('url-preview').textContent = siteData.pageName;
+                    batchUpdatePreview();
+                    autoSave();
+                },
+                'mainTitle': function() {
+                    siteData.mainTitle = this.value;
+                    batchUpdatePreview();
+                    autoSave();
+                },
+                'mainMessage': function() {
+                    siteData.mainMessage = this.value;
+                    getCachedElement('mainMessageCount').textContent = this.value.length;
+                    batchUpdatePreview();
+                    autoSave();
+                },
+                'plansTitle': function() {
+                    siteData.elements.plansTitle = this.value;
+                    batchUpdatePreview();
+                    autoSave();
+                },
+                'promisesTitle': function() {
+                    siteData.elements.promisesTitle = this.value;
+                    batchUpdatePreview();
+                    autoSave();
+                },
+                'counterText': function() {
+                    siteData.elements.counterText = this.value;
+                    batchUpdatePreview();
+                    autoSave();
+                },
+                'counterDate': function() {
+                    siteData.startDate = this.value;
+                    batchUpdatePreview();
+                    autoSave();
+                },
+                'videoUrl': function() {
+                    siteData.elements.videoUrl = this.value;
+                    validateVideoUrl();
+                    batchUpdatePreview();
+                    autoSave();
+                },
+                'videoMessage': function() {
+                    siteData.elements.videoMessage = this.value;
+                    batchUpdatePreview();
+                    autoSave();
+                },
+                'musicUrl': function() {
+                    siteData.elements.musicUrl = this.value;
+                    validateMusicUrl();
+                    batchUpdatePreview();
+                    autoSave();
+                },
+                'petalsEmoji': function() {
+                    siteData.elements.petalsEmoji = this.value;
+                    batchUpdatePreview();
+                    autoSave();
+                }
+            };
+
+            Object.entries(eventHandlers).forEach(([id, handler]) => {
+                const element = getCachedElement(id);
+                if (element) {
+                    element.addEventListener('input', handler);
+                }
+            });
+
+            // Toggles
+            const toggles = [
+                'declarationsToggle', 'carouselToggle', 
+                'plansToggle', 'promisesToggle', 'videoToggle', 'musicToggle',
+                'counterToggle', 'petalsToggle'
+            ];
+            
+            toggles.forEach(toggleId => {
+                const element = getCachedElement(toggleId);
+                if (element) {
+                    element.addEventListener('change', function() {
+                        const elementKey = toggleId.replace('Toggle', '');
+                        siteData.elements[elementKey] = this.checked;
+                        batchUpdatePreview();
+                        autoSave();
+                    });
+                }
+            });
+
+            // Controles de quantidade
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('counter-btn')) {
+                    const container = e.target.closest('.counter-controls');
+                    const count = parseInt(e.target.dataset.count);
+                    const section = container.closest('.optional-section');
+                    const type = section.querySelector('label').textContent.trim();
+                    
+                    container.querySelectorAll('.counter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+                    
+                    if (type.includes('Declarações')) {
+                        siteData.elements.declarationsCount = count;
+                        updateDeclarationFields();
+                    } else if (type.includes('Planos')) {
+                        siteData.elements.plansCount = count;
+                        updatePlanFields();
+                    }
+                    
+                    batchUpdatePreview();
+                    autoSave();
+                }
+            });
+
+            // Modal de restauração
+            getCachedElement('restoreYes').addEventListener('click', () => {
+                const result = restoreSavedData();
+                if (result.success) {
+                    showStep(result.step || currentStep);
+                }
+                hideRestoreModal();
+            });
+
+            getCachedElement('restoreNo').addEventListener('click', () => {
+                clearSavedData();
+                hideRestoreModal();
+                showStep(1);
+            });
+        }
+
+        // =============================================
+        // INICIALIZAÇÃO DO SISTEMA
+        // =============================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar cache
+            initializeEventListeners();
+            
+            // Verificar se há dados salvos
+            setTimeout(() => {
+                const savedData = restoreSavedData();
+                if (savedData.success) {
+                    showRestoreModal();
+                } else {
+                    showStep(1);
+                }
+            }, 100);
+            
+            // Inicializar componentes
+            updateDeclarationFields();
+            updatePlanFields();
+            updatePromiseFields();
+            updateProgressBar();
+            batchUpdatePreview();
+            
+            getCachedElement('mainMessageCount').textContent = siteData.mainMessage.length;
+            
+            // Iniciar atualização do contador em tempo real
+            setInterval(updateSimpleCounter, 1000);
+            
+            // Inicializar validação dos URLs
+            validateVideoUrl();
+            validateMusicUrl();
+            
+            // Salvar automaticamente periodicamente (a cada 30 segundos)
+            setInterval(autoSave, 30000);
+        });
     </script>
 </body>
 </html>
