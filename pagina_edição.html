@@ -1466,6 +1466,115 @@
                 left: 6px;
             }
         }
+
+        /* ============================================= */
+        /* ESTILOS DO CARROSSEL MELHORADO */
+        /* ============================================= */
+
+        .carousel-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .carousel-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .carousel-message.warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .carousel-message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .carousel-indicators .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicators .indicator.active {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.2);
+        }
+
+        .preview-thumb {
+            transition: transform 0.2s ease;
+        }
+
+        .preview-thumb:hover {
+            transform: scale(1.05);
+        }
+
+        .image-counter {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Melhorias para mobile */
+        @media (max-width: 768px) {
+            .carousel-btn {
+                padding: 12px 15px;
+                font-size: 18px;
+            }
+            
+            .preview-grid {
+                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            }
+            
+            .preview-thumb {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .add-image-btn {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .preview-grid {
+                grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            }
+            
+            .preview-thumb {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .add-image-btn {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .carousel-message {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2356,73 +2465,301 @@
         // MÓDULO DE UPLOAD DE IMAGENS (OTIMIZADO)
         // =============================================
 
+        // Configurações do carrossel
+        const CAROUSEL_CONFIG = {
+            MIN_IMAGES: 3,
+            MAX_IMAGES: 8,
+            AUTO_ADVANCE: false, // DESATIVADO conforme solicitado
+            AUTO_ADVANCE_INTERVAL: 5000
+        };
+
+        // Estado do carrossel
+        let carouselState = {
+            currentIndex: 0,
+            autoAdvanceInterval: null,
+            isUserInteracting: false
+        };
+
+        // Função otimizada para upload múltiplo de imagens
         function handleMultipleImageUpload(event) {
             const files = event.target.files;
             if (files.length === 0) return;
             
-            Array.from(files).forEach((file) => {
+            const remainingSlots = CAROUSEL_CONFIG.MAX_IMAGES - siteData.carouselImages.length;
+            
+            if (remainingSlots <= 0) {
+                showCarouselMessage(`❌ Limite máximo de ${CAROUSEL_CONFIG.MAX_IMAGES} imagens atingido!`, 'error');
+                event.target.value = "";
+                return;
+            }
+            
+            const filesToProcess = Array.from(files).slice(0, remainingSlots);
+            
+            if (files.length > remainingSlots) {
+                showCarouselMessage(`⚠️ Apenas ${remainingSlots} imagens foram adicionadas (limite: ${CAROUSEL_CONFIG.MAX_IMAGES})`, 'warning');
+            }
+            
+            let processedCount = 0;
+            
+            filesToProcess.forEach((file) => {
+                // Validação do tipo de arquivo
+                if (!file.type.startsWith('image/')) {
+                    showCarouselMessage(`❌ "${file.name}" não é uma imagem válida`, 'error');
+                    return;
+                }
+                
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    siteData.carouselImages.push(e.target.result);
-                    updateCarouselPreview();
-                    batchUpdatePreview();
-                    validateCarouselCount();
+                    siteData.carouselImages.push({
+                        src: e.target.result,
+                        name: file.name,
+                        size: file.size
+                    });
+                    processedCount++;
+                    
+                    if (processedCount === filesToProcess.length) {
+                        updateCarouselPreview();
+                        batchUpdatePreview();
+                        validateCarouselCount();
+                        showCarouselMessage(`✅ ${processedCount} imagem(ns) adicionada(s) com sucesso!`, 'success');
+                    }
                 };
+                
+                reader.onerror = function() {
+                    showCarouselMessage(`❌ Erro ao carregar "${file.name}"`, 'error');
+                };
+                
                 reader.readAsDataURL(file);
             });
             
             event.target.value = "";
         }
 
-        function validateCarouselCount() {
-            if (siteData.elements.carousel) {
-                const carouselError = getCachedElement('carouselError');
-                if (siteData.carouselImages.length < 3) {
-                    showValidationError(carouselError);
-                } else {
-                    hideValidationError(carouselError);
-                }
+        // Função para mostrar mensagens do carrossel
+        function showCarouselMessage(message, type = 'info') {
+            const messageElement = document.getElementById('carouselMessage') || createCarouselMessageElement();
+            
+            messageElement.textContent = message;
+            messageElement.className = `carousel-message ${type}`;
+            messageElement.style.display = 'block';
+            
+            // Auto-esconder mensagens de sucesso/info após 3 segundos
+            if (type === 'success' || type === 'info') {
+                setTimeout(() => {
+                    messageElement.style.display = 'none';
+                }, 3000);
             }
         }
 
+        // Criar elemento de mensagem se não existir
+        function createCarouselMessageElement() {
+            const existing = document.getElementById('carouselMessage');
+            if (existing) return existing;
+            
+            const messageElement = document.createElement('div');
+            messageElement.id = 'carouselMessage';
+            messageElement.className = 'carousel-message';
+            messageElement.style.cssText = `
+                display: none;
+                padding: 10px 15px;
+                border-radius: 8px;
+                margin: 10px 0;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            `;
+            
+            const carouselFields = document.getElementById('carouselFields');
+            if (carouselFields) {
+                carouselFields.insertBefore(messageElement, carouselFields.firstChild);
+            }
+            
+            return messageElement;
+        }
+
+        // Validação melhorada da contagem do carrossel
+        function validateCarouselCount() {
+            const carouselError = getCachedElement('carouselError');
+            const carouselToggle = getCachedElement('carouselToggle');
+            
+            if (!carouselToggle.checked) {
+                hideValidationError(carouselError);
+                return true;
+            }
+            
+            const imageCount = siteData.carouselImages.length;
+            
+            if (imageCount < CAROUSEL_CONFIG.MIN_IMAGES) {
+                showValidationError(carouselError);
+                carouselError.textContent = `Selecione pelo menos ${CAROUSEL_CONFIG.MIN_IMAGES} imagens`;
+                return false;
+            } else if (imageCount > CAROUSEL_CONFIG.MAX_IMAGES) {
+                showValidationError(carouselError);
+                carouselError.textContent = `Máximo de ${CAROUSEL_CONFIG.MAX_IMAGES} imagens permitido`;
+                return false;
+            } else {
+                hideValidationError(carouselError);
+                return true;
+            }
+        }
+
+        // Preview do carrossel com melhorias
         function updateCarouselPreview() {
             const previewGrid = getCachedElement('carouselPreviewGrid');
+            if (!previewGrid) return;
+            
             previewGrid.innerHTML = '';
             
-            siteData.carouselImages.forEach((imgSrc, index) => {
+            // Mostrar contador
+            const counterElement = document.createElement('div');
+            counterElement.className = 'image-counter';
+            counterElement.textContent = `${siteData.carouselImages.length}/${CAROUSEL_CONFIG.MAX_IMAGES} imagens`;
+            counterElement.style.cssText = `
+                grid-column: 1 / -1;
+                text-align: center;
+                font-size: 14px;
+                color: #666;
+                margin-bottom: 10px;
+                font-weight: 500;
+            `;
+            previewGrid.appendChild(counterElement);
+            
+            // Miniaturas das imagens
+            siteData.carouselImages.forEach((imgData, index) => {
                 const thumbContainer = document.createElement('div');
                 thumbContainer.style.position = 'relative';
+                thumbContainer.style.cursor = 'pointer';
                 
                 const thumb = document.createElement('img');
-                thumb.src = imgSrc;
+                thumb.src = imgData.src;
                 thumb.className = 'preview-thumb';
                 thumb.alt = `Foto ${index + 1}`;
+                thumb.title = `Clique para visualizar\n${imgData.name}`;
+                
+                // Índice da imagem
+                const indexBadge = document.createElement('div');
+                indexBadge.className = 'image-index-badge';
+                indexBadge.textContent = index + 1;
+                indexBadge.style.cssText = `
+                    position: absolute;
+                    top: -5px;
+                    left: -5px;
+                    background: var(--primary-color);
+                    color: white;
+                    border-radius: 50%;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                `;
                 
                 const removeBtn = document.createElement('button');
                 removeBtn.className = 'remove-image-btn';
                 removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                removeBtn.title = 'Remover imagem';
                 removeBtn.onclick = (e) => {
                     e.stopPropagation();
                     removeCarouselImage(index);
                 };
                 
+                // Preview em tamanho maior ao clicar
+                thumb.onclick = () => showImagePreview(imgData.src, index);
+                
                 thumbContainer.appendChild(thumb);
+                thumbContainer.appendChild(indexBadge);
                 thumbContainer.appendChild(removeBtn);
                 previewGrid.appendChild(thumbContainer);
             });
             
-            const addBtn = document.createElement('div');
-            addBtn.className = 'add-image-btn';
-            addBtn.innerHTML = '<i class="fas fa-plus"></i>';
-            addBtn.onclick = () => getCachedElement('carouselMultipleInput').click();
-            previewGrid.appendChild(addBtn);
+            // Botão de adicionar (só mostra se não atingiu o limite)
+            if (siteData.carouselImages.length < CAROUSEL_CONFIG.MAX_IMAGES) {
+                const addBtn = document.createElement('div');
+                addBtn.className = 'add-image-btn';
+                addBtn.innerHTML = '<i class="fas fa-plus"></i>';
+                addBtn.title = `Adicionar imagens (${CAROUSEL_CONFIG.MAX_IMAGES - siteData.carouselImages.length} restantes)`;
+                addBtn.onclick = () => {
+                    const input = getCachedElement('carouselMultipleInput');
+                    if (input) {
+                        input.click();
+                    }
+                };
+                previewGrid.appendChild(addBtn);
+            }
         }
 
+        // Remover imagem com confirmação
         function removeCarouselImage(index) {
-            siteData.carouselImages.splice(index, 1);
-            updateCarouselPreview();
-            batchUpdatePreview();
-            validateCarouselCount();
+            if (siteData.carouselImages.length <= CAROUSEL_CONFIG.MIN_IMAGES) {
+                showCarouselMessage(`❌ Você precisa ter pelo menos ${CAROUSEL_CONFIG.MIN_IMAGES} imagens`, 'error');
+                return;
+            }
+            
+            const imageName = siteData.carouselImages[index].name;
+            
+            if (confirm(`Tem certeza que deseja remover "${imageName}"?`)) {
+                siteData.carouselImages.splice(index, 1);
+                updateCarouselPreview();
+                batchUpdatePreview();
+                validateCarouselCount();
+                showCarouselMessage('🗑️ Imagem removida', 'info');
+                autoSave();
+            }
+        }
+
+        // Preview de imagem em tamanho maior
+        function showImagePreview(src, index) {
+            // Criar overlay modal simples
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                cursor: pointer;
+            `;
+            
+            const img = document.createElement('img');
+            img.src = src;
+            img.style.cssText = `
+                max-width: 90%;
+                max-height: 80%;
+                object-fit: contain;
+                border-radius: 8px;
+            `;
+            
+            const info = document.createElement('div');
+            info.textContent = `Imagem ${index + 1} de ${siteData.carouselImages.length}`;
+            info.style.cssText = `
+                color: white;
+                margin-top: 15px;
+                font-size: 16px;
+            `;
+            
+            const closeHint = document.createElement('div');
+            closeHint.textContent = 'Clique em qualquer lugar para fechar';
+            closeHint.style.cssText = `
+                color: #ccc;
+                margin-top: 10px;
+                font-size: 14px;
+            `;
+            
+            overlay.appendChild(img);
+            overlay.appendChild(info);
+            overlay.appendChild(closeHint);
+            
+            overlay.onclick = () => document.body.removeChild(overlay);
+            
+            document.body.appendChild(overlay);
         }
 
         // =============================================
@@ -2635,7 +2972,7 @@
             // Ícone de música dentro do preview - COM COR ATUALIZADA
             if (siteData.elements.music && siteData.elements.musicUrl) {
                 previewHTML += `
-                    <button class="preview-music-control" style="background: ${siteData.primaryColor}; color: white;" onclick="toggleMusic()">♪</button>
+                    <button class="preview-music-control" style="background: ${siteData.primaryColor}; color: white;" onclick="toggleMusic()">❚❚</button>
                 `;
             }
             
@@ -2672,18 +3009,23 @@
             }
 
             // Carrossel - COM CORES ATUALIZADAS
-            if (siteData.elements.carousel && siteData.carouselImages && siteData.carouselImages.length >= 3) {
+            if (siteData.elements.carousel && siteData.carouselImages && siteData.carouselImages.length >= CAROUSEL_CONFIG.MIN_IMAGES) {
                 previewHTML += `
                     <div class="carousel-container">
                         <div class="carousel">
-                            ${siteData.carouselImages.map((imgSrc, i) => `
+                            ${siteData.carouselImages.map((imgData, i) => `
                                 <div class="carousel-slide">
-                                    <img src="${imgSrc}" alt="Foto ${i+1}" class="carousel-image">
+                                    <img src="${imgData.src}" alt="Foto ${i+1}" class="carousel-image" loading="lazy">
                                 </div>
                             `).join('')}
                         </div>
-                        <button class="carousel-btn" style="left: 10px; background: rgba(255, 255, 255, 0.7); color: ${siteData.primaryColor};">❮</button>
-                        <button class="carousel-btn" style="right: 10px; background: rgba(255, 255, 255, 0.7); color: ${siteData.primaryColor};">❯</button>
+                        <button class="carousel-btn prev-btn" style="left: 10px; background: rgba(255, 255, 255, 0.7); color: ${siteData.primaryColor};" title="Imagem anterior">❮</button>
+                        <button class="carousel-btn next-btn" style="right: 10px; background: rgba(255, 255, 255, 0.7); color: ${siteData.primaryColor};" title="Próxima imagem">❯</button>
+                        <div class="carousel-indicators">
+                            ${siteData.carouselImages.map((_, i) => `
+                                <span class="indicator ${i === 0 ? 'active' : ''}" data-index="${i}"></span>
+                            `).join('')}
+                        </div>
                     </div>
                 `;
             }
@@ -2915,36 +3257,122 @@
             return { years, months, days };
         }
 
+        // Carrossel interativo no preview - SEM AUTOMÁTICO
         function initCarousel() {
             const carousel = document.querySelector('.carousel');
             const slides = document.querySelectorAll('.carousel-slide');
-            const prevBtn = document.querySelector('.carousel-btn:nth-child(2)');
-            const nextBtn = document.querySelector('.carousel-btn:nth-child(3)');
+            const prevBtn = document.querySelector('.carousel-btn.prev-btn');
+            const nextBtn = document.querySelector('.carousel-btn.next-btn');
+            const indicators = document.querySelectorAll('.carousel-indicators .indicator');
             
             if (!carousel || !slides.length) return;
             
-            let currentIndex = 0;
+            // Parar qualquer intervalo anterior
+            stopAutoAdvance();
             
             function updateCarousel() {
-                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                carousel.style.transform = `translateX(-${carouselState.currentIndex * 100}%)`;
+                
+                // Atualizar indicadores
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === carouselState.currentIndex);
+                });
+            }
+            
+            function goToSlide(index) {
+                carouselState.currentIndex = index;
+                updateCarousel();
             }
             
             function nextSlide() {
-                currentIndex = (currentIndex + 1) % slides.length;
+                carouselState.currentIndex = (carouselState.currentIndex + 1) % slides.length;
                 updateCarousel();
             }
             
             function prevSlide() {
-                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                carouselState.currentIndex = (carouselState.currentIndex - 1 + slides.length) % slides.length;
                 updateCarousel();
             }
             
-            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            // Event listeners para botões
+            if (nextBtn) {
+                nextBtn.onclick = nextSlide;
+            }
             
-            // Auto-advance
-            setInterval(nextSlide, 5000);
+            if (prevBtn) {
+                prevBtn.onclick = prevSlide;
+            }
+            
+            // Event listeners para indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.onclick = () => goToSlide(index);
+            });
+            
+            // Navegação por teclado
+            document.addEventListener('keydown', (e) => {
+                if (!carousel.parentNode) return; // Só funciona se o carrossel estiver visível
+                
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            });
+            
+            // Swipe para mobile
+            let startX = 0;
+            let endX = 0;
+            
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+            
+            carousel.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const diff = startX - endX;
+                const swipeThreshold = 50;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        nextSlide(); // Swipe para esquerda
+                    } else {
+                        prevSlide(); // Swipe para direita
+                    }
+                }
+            }
+            
+            // Inicializar na primeira imagem
+            carouselState.currentIndex = 0;
+            updateCarousel();
         }
+
+// Funções de auto-advance (mantidas mas desativadas)
+function startAutoAdvance() {
+    if (!CAROUSEL_CONFIG.AUTO_ADVANCE) return;
+    
+    stopAutoAdvance();
+    carouselState.autoAdvanceInterval = setInterval(() => {
+        if (!carouselState.isUserInteracting) {
+            const carousel = document.querySelector('.carousel');
+            const slides = document.querySelectorAll('.carousel-slide');
+            if (carousel && slides.length > 0) {
+                carouselState.currentIndex = (carouselState.currentIndex + 1) % slides.length;
+                carousel.style.transform = `translateX(-${carouselState.currentIndex * 100}%)`;
+            }
+        }
+    }, CAROUSEL_CONFIG.AUTO_ADVANCE_INTERVAL);
+}
+
+function stopAutoAdvance() {
+    if (carouselState.autoAdvanceInterval) {
+        clearInterval(carouselState.autoAdvanceInterval);
+        carouselState.autoAdvanceInterval = null;
+    }
+}
 
         function initPlanAnimation() {
             const planItems = document.querySelectorAll('.plan-item');
@@ -3368,8 +3796,21 @@
             
             // Salvar automaticamente periodicamente (a cada 30 segundos)
             setInterval(autoSave, 30000);
+
+                // Melhorar o input de upload para mobile
+                const carouselInput = getCachedElement('carouselMultipleInput');
+                if (carouselInput) {
+                    // Atributos para melhor compatibilidade mobile
+                    carouselInput.setAttribute('accept', 'image/*');
+                    carouselInput.setAttribute('capture', 'environment'); // Para câmera traseira
+                    carouselInput.setAttribute('multiple', 'true');
+                }
+                
+                // Inicializar carrossel se houver imagens
+                if (siteData.carouselImages.length >= CAROUSEL_CONFIG.MIN_IMAGES) {
+                    setTimeout(initCarousel, 100);
+                }
         });
     </script>
 </body>
 </html>
-
