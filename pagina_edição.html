@@ -2711,14 +2711,31 @@
                 carouselInput.click();
             });
             
+            // CORREÇÃO: Remover o atributo capture que força a câmera
             // Melhorar o input file para mobile
             carouselInput.style.display = 'none';
             carouselInput.setAttribute('accept', 'image/*');
             carouselInput.setAttribute('multiple', 'true');
             
+            // REMOVIDO: carouselInput.setAttribute('capture', 'environment'); // ← ESTA LINHA É O PROBLEMA
+            
             // Adicionar atributos para melhor experiência mobile
-            carouselInput.setAttribute('capture', 'environment'); // Permitir câmera traseira
             carouselInput.setAttribute('aria-label', 'Selecionar fotos para o carrossel');
+            
+            // Adicionar evento para melhor feedback no mobile
+            carouselInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    // Feedback visual de sucesso
+                    carouselUpload.style.borderColor = '#28a745';
+                    carouselUpload.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
+                    
+                    // Voltar ao normal após 1 segundo
+                    setTimeout(() => {
+                        carouselUpload.style.borderColor = '';
+                        carouselUpload.style.backgroundColor = '';
+                    }, 1000);
+                }
+            });
         }
 
         // =============================================
