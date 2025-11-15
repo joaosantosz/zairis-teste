@@ -2602,14 +2602,15 @@
             }
         }
 
-        // Preview do carrossel com melhorias
+
+        // Preview do carrossel com melhorias - VERSÃO CORRIGIDA
         function updateCarouselPreview() {
             const previewGrid = getCachedElement('carouselPreviewGrid');
             if (!previewGrid) return;
             
             previewGrid.innerHTML = '';
             
-            // Mostrar contador
+            // Mostrar contador - SEMPRE mostrar, mesmo no mobile
             const counterElement = document.createElement('div');
             counterElement.className = 'image-counter';
             counterElement.textContent = `${siteData.carouselImages.length}/${CAROUSEL_CONFIG.MAX_IMAGES} imagens`;
@@ -2674,7 +2675,8 @@
                 previewGrid.appendChild(thumbContainer);
             });
             
-            // Botão de adicionar (só mostra se não atingiu o limite)
+            // 🔥 CORREÇÃO: SEMPRE mostrar o botão de adicionar se não atingiu o limite
+            // Isso resolve o problema do mobile onde o botão some
             if (siteData.carouselImages.length < CAROUSEL_CONFIG.MAX_IMAGES) {
                 const addBtn = document.createElement('div');
                 addBtn.className = 'add-image-btn';
@@ -2683,13 +2685,37 @@
                 addBtn.onclick = () => {
                     const input = getCachedElement('carouselMultipleInput');
                     if (input) {
-                        input.click();
+                        // 🔥 IMPORTANTE: Resetar o input para permitir selecionar as mesmas imagens
+                        input.value = '';
+                        
+                        // Configurar para mobile
+                        if (isMobileDevice()) {
+                            setupMobileInput('gallery');
+                        } else {
+                            input.click();
+                        }
                     }
                 };
                 previewGrid.appendChild(addBtn);
+            } else {
+                // Mostrar mensagem quando atingir o limite
+                const limitMessage = document.createElement('div');
+                limitMessage.className = 'limit-message';
+                limitMessage.textContent = `✅ Limite de ${CAROUSEL_CONFIG.MAX_IMAGES} imagens atingido`;
+                limitMessage.style.cssText = `
+                    grid-column: 1 / -1;
+                    text-align: center;
+                    padding: 10px;
+                    background: #d4edda;
+                    color: #155724;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    margin-top: 10px;
+                `;
+                previewGrid.appendChild(limitMessage);
             }
         }
-
+            
         // Remover imagem com confirmação
         function removeCarouselImage(index) {
             if (siteData.carouselImages.length <= CAROUSEL_CONFIG.MIN_IMAGES) {
@@ -2708,6 +2734,44 @@
                 autoSave();
             }
         }
+
+        // Configurar input baseado na origem (câmera ou galeria) - VERSÃO CORRIGIDA
+        function setupMobileInput(source) {
+            const input = getCachedElement('carouselMultipleInput');
+            if (!input) return;
+            
+            // 🔥 CORREÇÃO CRÍTICA: Sempre resetar o valor do input
+            // Isso permite selecionar imagens múltiplas vezes
+            input.value = '';
+            
+            // Limpar e reconfigurar atributos
+            input.removeAttribute('capture');
+            input.removeAttribute('accept');
+            
+            if (source === 'camera') {
+                // Para câmera: aceitar apenas imagens e usar câmera traseira
+                input.setAttribute('accept', 'image/*');
+                input.setAttribute('capture', 'environment');
+            } else {
+                // Para galeria: aceitar imagens sem forçar câmera
+                input.setAttribute('accept', 'image/*');
+                // SEM o atributo 'capture' - isso abre a galeria
+                input.removeAttribute('capture'); // Garantir que está removido
+            }
+            
+            // 🔥 CORREÇÃO: Usar setTimeout para garantir que o reset funcionou
+            setTimeout(() => {
+                try {
+                    input.click();
+                } catch (error) {
+                    console.log('Erro ao abrir seletor de arquivos:', error);
+                    // Fallback: mostrar mensagem amigável
+                    showCarouselMessage('📱 Toque novamente para selecionar imagens', 'info');
+                }
+            }, 300);
+        }
+
+
 
         // Preview de imagem em tamanho maior
         function showImagePreview(src, index) {
@@ -3802,10 +3866,10 @@ function stopAutoAdvance() {
                 if (carouselInput) {
                     // Atributos para melhor compatibilidade mobile
                     carouselInput.setAttribute('accept', 'image/*');
+                    carouselInput.setAttribute('capture', 'environment'); // Para câmera traseira
                     carouselInput.setAttribute('multiple', 'true');
                 }
-
-                carouselInput.setAttribute('data-mobile-fix', 'true');
+                
                 // Inicializar carrossel se houver imagens
                 if (siteData.carouselImages.length >= CAROUSEL_CONFIG.MIN_IMAGES) {
                     setTimeout(initCarousel, 100);
@@ -3814,4 +3878,3 @@ function stopAutoAdvance() {
     </script>
 </body>
 </html>
-
