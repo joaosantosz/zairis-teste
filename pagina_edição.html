@@ -3802,10 +3802,10 @@ function stopAutoAdvance() {
                 if (carouselInput) {
                     // Atributos para melhor compatibilidade mobile
                     carouselInput.setAttribute('accept', 'image/*');
-                    carouselInput.setAttribute('capture', 'environment'); // Para câmera traseira
                     carouselInput.setAttribute('multiple', 'true');
                 }
-                
+
+                carouselInput.setAttribute('data-mobile-fix', 'true');
                 // Inicializar carrossel se houver imagens
                 if (siteData.carouselImages.length >= CAROUSEL_CONFIG.MIN_IMAGES) {
                     setTimeout(initCarousel, 100);
@@ -3814,3 +3814,4 @@ function stopAutoAdvance() {
     </script>
 </body>
 </html>
+
