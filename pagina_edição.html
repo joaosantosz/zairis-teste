@@ -1,3 +1,47 @@
+Quero que você analise e corrija problemas no meu código do carrossel do meu micro-SaaS de criação de sites personalizados.
+
+O problema atual:
+
+O carrossel aceita mínimo de 3 imagens, mas deveria aceitar no máximo 8 imagens.
+Porém, o usuário consegue adicionar mais de 8 — isso é um erro.
+
+No mobile, às vezes não consigo adicionar imagens ao carrossel.
+O input de upload falha ou não dispara o evento corretamente.
+
+Quero que você revise toda a lógica de:
+
+Adicionar imagem ao carrossel
+
+Validar quantidade mínima e máxima
+
+Mostrar mensagens de erro claras (ex: “Máximo de 8 imagens permitido”)
+
+Validar antes de ir para o próximo passo
+
+Garantir que o preview atualize corretamente
+
+O fluxo do usuário deve ser:
+
+Poder adicionar de 3 a 8 imagens
+
+Ver mensagem amigável se tentar ultrapassar o limite
+
+Preview atualizar instantaneamente
+
+No mobile, upload precisa funcionar 100%
+
+Aqui estão minhas funções relacionadas ao carrossel (analise, corrija, reescreva se necessário):
+
+
+Quero que você me dê o codigo completo entregue como resposta:
+
+✔ O diagnóstico do problema
+✔ O que está errado no meu código
+✔ A solução exata
+✔ Novo código corrigido
+
+aqui está o meu codigo:
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,9 +54,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* SEU CSS ORIGINAL AQUI - MANTIDO INTACTO */
-
-
-                :root {
+        :root {
             --primary-color: #000000;
             --secondary-color: #ff6b81;
             --light-pink: #ffb6c1;
@@ -453,6 +495,72 @@
             background: rgba(0, 0, 0, 0.02);
         }
 
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .preview-thumb {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .remove-image-btn {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .remove-image-btn:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+        .add-image-btn {
+            width: 80px;
+            height: 80px;
+            border: 2px dashed var(--medium-gray);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(255, 182, 193, 0.1);
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .add-image-btn:hover {
+            border-color: var(--primary-color);
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .upload-info {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
 
         .emoji-input {
             font-size: 24px;
@@ -1343,21 +1451,6 @@
             .modal-buttons {
                 flex-direction: column;
             }
-
-            .preview-grid {
-                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-                gap: 8px;
-            }
-            
-            .preview-thumb,
-            .add-image-btn {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .multiple-image-upload {
-                padding: 20px 15px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1416,81 +1509,6 @@
                 bottom: 6px;
                 left: 6px;
             }
-        }
-        /* NOVAS REGRAS CSS PARA O CARROSSEL */
-        .preview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .preview-thumb {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 2px solid var(--white);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: relative;
-            transition: transform 0.2s ease;
-        }
-
-        .preview-thumb:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .remove-image-btn {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #dc3545;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            font-size: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-        }
-
-        .remove-image-btn:hover {
-            background: #c82333;
-            transform: scale(1.1);
-        }
-
-        .add-image-btn {
-            width: 80px;
-            height: 80px;
-            border: 2px dashed var(--medium-gray);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: rgba(255, 182, 193, 0.1);
-            font-size: 24px;
-            color: var(--primary-color);
-        }
-
-        .add-image-btn:hover {
-            border-color: var(--primary-color);
-            background: rgba(0, 0, 0, 0.02);
-            transform: scale(1.05);
-        }
-
-        .upload-info {
-            color: var(--dark-gray);
-            font-size: 0.9rem;
-            margin-top: 10px;
-            transition: color 0.3s ease;
         }
     </style>
 </head>
@@ -1665,13 +1683,13 @@
                         
                         <div class="dynamic-fields" id="carouselFields">
                             <div class="form-group">
-                                <label>Selecionar Fotos (mínimo 3, máximo 8)</label>
+                                <label>Selecionar Fotos (mínimo 3)</label>
                                 <div class="multiple-image-upload" id="carouselMultipleUpload">
                                     <div class="upload-icon">
                                         <i class="fas fa-images"></i>
                                     </div>
                                     <p>Clique para selecionar múltiplas fotos</p>
-                                    <p class="upload-info">Selecione 3-8 imagens</p>
+                                    <p class="upload-info">Selecione pelo menos 3 imagens</p>
                                     <div class="preview-grid" id="carouselPreviewGrid">
                                         <div class="add-image-btn" id="addCarouselImages">
                                             <i class="fas fa-plus"></i>
@@ -1682,7 +1700,6 @@
                                 <div class="validation-message" id="carouselError">
                                     Por favor, selecione pelo menos 3 imagens
                                 </div>
-                                <div id="carouselStatus" style="display: none;"></div>
                             </div>
                         </div>
                     </div>
@@ -2019,12 +2036,6 @@
         const domCache = {};
 
         // =============================================
-        // CONSTANTES PARA O CARROSSEL
-        // =============================================
-        const MIN_CAROUSEL_IMAGES = 3;
-        const MAX_CAROUSEL_IMAGES = 8;
-
-        // =============================================
         // MÓDULO DE VALIDAÇÃO OBRIGATÓRIA
         // =============================================
 
@@ -2072,7 +2083,7 @@
                     getCachedElement('mainMessageError')
                 ),
                 6: () => {
-                    if (siteData.elements.carousel && siteData.carouselImages.length < MIN_CAROUSEL_IMAGES) {
+                    if (siteData.elements.carousel && siteData.carouselImages.length < 3) {
                         showValidationError(getCachedElement('carouselError'));
                         return false;
                     }
@@ -2386,59 +2397,21 @@
         }
 
         // =============================================
-        // MÓDULO DE CARROSSEL CORRIGIDO
+        // MÓDULO DE UPLOAD DE IMAGENS (OTIMIZADO)
         // =============================================
 
         function handleMultipleImageUpload(event) {
             const files = event.target.files;
             if (files.length === 0) return;
             
-            // Verificar se adicionar essas imagens ultrapassaria o limite
-            const currentCount = siteData.carouselImages.length;
-            const newCount = currentCount + files.length;
-            
-            if (newCount > MAX_CAROUSEL_IMAGES) {
-                showCarouselError(`❌ Limite máximo de ${MAX_CAROUSEL_IMAGES} imagens atingido! Remova algumas imagens antes de adicionar novas.`);
-                event.target.value = "";
-                return;
-            }
-            
-            // Limpar mensagem de erro anterior
-            hideCarouselError();
-            
-            // Processar cada arquivo
             Array.from(files).forEach((file) => {
-                // Validar tipo de arquivo
-                if (!file.type.startsWith('image/')) {
-                    showCarouselError('❌ Por favor, selecione apenas arquivos de imagem (JPG, PNG, etc.)');
-                    return;
-                }
-                
-                // Validar tamanho do arquivo (máximo 5MB)
-                if (file.size > 5 * 1024 * 1024) {
-                    showCarouselError('❌ Imagem muito grande! Tamanho máximo: 5MB');
-                    return;
-                }
-                
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     siteData.carouselImages.push(e.target.result);
                     updateCarouselPreview();
                     batchUpdatePreview();
                     validateCarouselCount();
-                    
-                    // Mostrar mensagem de sucesso para a primeira imagem
-                    if (currentCount === 0 && siteData.carouselImages.length >= MIN_CAROUSEL_IMAGES) {
-                        showCarouselSuccess(`✅ ${siteData.carouselImages.length}/${MAX_CAROUSEL_IMAGES} imagens adicionadas. Mínimo atingido!`);
-                    } else {
-                        updateCarouselStatus();
-                    }
                 };
-                
-                reader.onerror = function() {
-                    showCarouselError('❌ Erro ao carregar a imagem. Tente novamente.');
-                };
-                
                 reader.readAsDataURL(file);
             });
             
@@ -2446,117 +2419,28 @@
         }
 
         function validateCarouselCount() {
-            const carouselError = getCachedElement('carouselError');
-            const currentCount = siteData.carouselImages.length;
-            
-            if (!siteData.elements.carousel) {
-                hideCarouselError();
-                return true;
-            }
-            
-            if (currentCount < MIN_CAROUSEL_IMAGES) {
-                showCarouselError(`📷 Adicione pelo menos ${MIN_CAROUSEL_IMAGES} imagens (${currentCount}/${MIN_CAROUSEL_IMAGES})`);
-                return false;
-            } else if (currentCount > MAX_CAROUSEL_IMAGES) {
-                showCarouselError(`❌ Máximo de ${MAX_CAROUSEL_IMAGES} imagens permitido! Remova ${currentCount - MAX_CAROUSEL_IMAGES} imagem(ns)`);
-                return false;
-            } else {
-                hideCarouselError();
-                updateCarouselStatus();
-                return true;
-            }
-        }
-
-        function updateCarouselStatus() {
-            const currentCount = siteData.carouselImages.length;
-            const statusElement = getCachedElement('carouselStatus');
-            const uploadInfo = document.querySelector('.upload-info');
-            
-            if (uploadInfo) {
-                if (currentCount >= MIN_CAROUSEL_IMAGES && currentCount <= MAX_CAROUSEL_IMAGES) {
-                    uploadInfo.innerHTML = `✅ ${currentCount}/${MAX_CAROUSEL_IMAGES} imagens - Pronto!`;
-                    uploadInfo.style.color = '#28a745';
-                } else if (currentCount > MAX_CAROUSEL_IMAGES) {
-                    uploadInfo.innerHTML = `❌ ${currentCount}/${MAX_CAROUSEL_IMAGES} - Muito imagens!`;
-                    uploadInfo.style.color = '#dc3545';
+            if (siteData.elements.carousel) {
+                const carouselError = getCachedElement('carouselError');
+                if (siteData.carouselImages.length < 3) {
+                    showValidationError(carouselError);
                 } else {
-                    uploadInfo.innerHTML = `📷 Selecione ${MIN_CAROUSEL_IMAGES}-${MAX_CAROUSEL_IMAGES} imagens (${currentCount}/${MIN_CAROUSEL_IMAGES})`;
-                    uploadInfo.style.color = '#6c757d';
+                    hideValidationError(carouselError);
                 }
             }
-        }
-
-        function showCarouselError(message) {
-            const carouselError = getCachedElement('carouselError');
-            carouselError.textContent = message;
-            carouselError.style.display = 'block';
-            carouselError.style.backgroundColor = '#f8d7da';
-            carouselError.style.borderColor = '#f5c6cb';
-            carouselError.style.color = '#721c24';
-            
-            // Auto-esconder após 5 segundos
-            setTimeout(() => {
-                if (carouselError.textContent === message) {
-                    hideCarouselError();
-                }
-            }, 5000);
-        }
-
-        function showCarouselSuccess(message) {
-            const carouselError = getCachedElement('carouselError');
-            carouselError.textContent = message;
-            carouselError.style.display = 'block';
-            carouselError.style.backgroundColor = '#d4edda';
-            carouselError.style.borderColor = '#c3e6cb';
-            carouselError.style.color = '#155724';
-            
-            // Auto-esconder após 3 segundos
-            setTimeout(() => {
-                if (carouselError.textContent === message) {
-                    hideCarouselError();
-                }
-            }, 3000);
-        }
-
-        function hideCarouselError() {
-            const carouselError = getCachedElement('carouselError');
-            carouselError.style.display = 'none';
         }
 
         function updateCarouselPreview() {
             const previewGrid = getCachedElement('carouselPreviewGrid');
-            if (!previewGrid) return;
-            
             previewGrid.innerHTML = '';
             
-            // Adicionar miniaturas das imagens
             siteData.carouselImages.forEach((imgSrc, index) => {
                 const thumbContainer = document.createElement('div');
                 thumbContainer.style.position = 'relative';
-                thumbContainer.style.display = 'inline-block';
                 
                 const thumb = document.createElement('img');
                 thumb.src = imgSrc;
                 thumb.className = 'preview-thumb';
                 thumb.alt = `Foto ${index + 1}`;
-                thumb.style.cursor = 'pointer';
-                
-                // Badge com número da imagem
-                const badge = document.createElement('div');
-                badge.style.position = 'absolute';
-                badge.style.top = '-5px';
-                badge.style.left = '-5px';
-                badge.style.background = '#007bff';
-                badge.style.color = 'white';
-                badge.style.borderRadius = '50%';
-                badge.style.width = '20px';
-                badge.style.height = '20px';
-                badge.style.fontSize = '12px';
-                badge.style.display = 'flex';
-                badge.style.alignItems = 'center';
-                badge.style.justifyContent = 'center';
-                badge.style.fontWeight = 'bold';
-                badge.textContent = index + 1;
                 
                 const removeBtn = document.createElement('button');
                 removeBtn.className = 'remove-image-btn';
@@ -2566,45 +2450,16 @@
                     removeCarouselImage(index);
                 };
                 
-                // Tooltip na imagem
-                thumb.title = `Clique para visualizar | Imagem ${index + 1}`;
-                thumb.onclick = () => previewCarouselImage(index);
-                
                 thumbContainer.appendChild(thumb);
-                thumbContainer.appendChild(badge);
                 thumbContainer.appendChild(removeBtn);
                 previewGrid.appendChild(thumbContainer);
             });
             
-            // Botão de adicionar (só mostra se não atingiu o limite)
-            if (siteData.carouselImages.length < MAX_CAROUSEL_IMAGES) {
-                const addBtn = document.createElement('div');
-                addBtn.className = 'add-image-btn';
-                addBtn.innerHTML = '<i class="fas fa-plus"></i>';
-                addBtn.title = `Adicionar mais imagens (${MAX_CAROUSEL_IMAGES - siteData.carouselImages.length} restantes)`;
-                addBtn.onclick = () => {
-                    if (siteData.carouselImages.length >= MAX_CAROUSEL_IMAGES) {
-                        showCarouselError(`❌ Máximo de ${MAX_CAROUSEL_IMAGES} imagens atingido!`);
-                        return;
-                    }
-                    getCachedElement('carouselMultipleInput').click();
-                };
-                previewGrid.appendChild(addBtn);
-            } else {
-                // Mensagem quando atingiu o limite
-                const limitMessage = document.createElement('div');
-                limitMessage.style.gridColumn = '1 / -1';
-                limitMessage.style.textAlign = 'center';
-                limitMessage.style.padding = '10px';
-                limitMessage.style.background = '#d4edda';
-                limitMessage.style.borderRadius = '5px';
-                limitMessage.style.color = '#155724';
-                limitMessage.style.fontSize = '14px';
-                limitMessage.innerHTML = `✅ Máximo de ${MAX_CAROUSEL_IMAGES} imagens atingido!`;
-                previewGrid.appendChild(limitMessage);
-            }
-            
-            updateCarouselStatus();
+            const addBtn = document.createElement('div');
+            addBtn.className = 'add-image-btn';
+            addBtn.innerHTML = '<i class="fas fa-plus"></i>';
+            addBtn.onclick = () => getCachedElement('carouselMultipleInput').click();
+            previewGrid.appendChild(addBtn);
         }
 
         function removeCarouselImage(index) {
@@ -2612,130 +2467,6 @@
             updateCarouselPreview();
             batchUpdatePreview();
             validateCarouselCount();
-            autoSave();
-        }
-
-        function previewCarouselImage(index) {
-            const imageUrl = siteData.carouselImages[index];
-            const modal = document.createElement('div');
-            modal.style.position = 'fixed';
-            modal.style.top = '0';
-            modal.style.left = '0';
-            modal.style.width = '100%';
-            modal.style.height = '100%';
-            modal.style.background = 'rgba(0,0,0,0.9)';
-            modal.style.display = 'flex';
-            modal.style.flexDirection = 'column';
-            modal.style.alignItems = 'center';
-            modal.style.justifyContent = 'center';
-            modal.style.zIndex = '10000';
-            modal.style.padding = '20px';
-            
-            const img = document.createElement('img');
-            img.src = imageUrl;
-            img.style.maxWidth = '90%';
-            img.style.maxHeight = '80%';
-            img.style.objectFit = 'contain';
-            img.style.borderRadius = '10px';
-            
-            const info = document.createElement('div');
-            info.style.color = 'white';
-            info.style.marginTop = '15px';
-            info.style.textAlign = 'center';
-            info.innerHTML = `Imagem ${index + 1} de ${siteData.carouselImages.length}`;
-            
-            const closeBtn = document.createElement('button');
-            closeBtn.innerHTML = 'Fechar (ESC)';
-            closeBtn.style.marginTop = '15px';
-            closeBtn.style.padding = '10px 20px';
-            closeBtn.style.background = '#dc3545';
-            closeBtn.style.color = 'white';
-            closeBtn.style.border = 'none';
-            closeBtn.style.borderRadius = '5px';
-            closeBtn.style.cursor = 'pointer';
-            
-            closeBtn.onclick = () => document.body.removeChild(modal);
-            
-            // Fechar com ESC
-            const keyHandler = (e) => {
-                if (e.key === 'Escape') {
-                    document.body.removeChild(modal);
-                    document.removeEventListener('keydown', keyHandler);
-                }
-            };
-            
-            document.addEventListener('keydown', keyHandler);
-            
-            modal.appendChild(img);
-            modal.appendChild(info);
-            modal.appendChild(closeBtn);
-            document.body.appendChild(modal);
-            
-            // Fechar ao clicar fora da imagem
-            modal.onclick = (e) => {
-                if (e.target === modal) {
-                    document.body.removeChild(modal);
-                    document.removeEventListener('keydown', keyHandler);
-                }
-            };
-        }
-
-        // =============================================
-        // MELHORIAS PARA MOBILE
-        // =============================================
-
-        function initializeMobileUpload() {
-            const carouselUpload = getCachedElement('carouselMultipleUpload');
-            const carouselInput = getCachedElement('carouselMultipleInput');
-            
-            if (!carouselUpload || !carouselInput) return;
-            
-            // Melhorar feedback visual para mobile
-            carouselUpload.style.cursor = 'pointer';
-            carouselUpload.addEventListener('touchstart', function() {
-                this.style.transform = 'scale(0.98)';
-                this.style.backgroundColor = 'rgba(255, 182, 193, 0.2)';
-            });
-            
-            carouselUpload.addEventListener('touchend', function() {
-                this.style.transform = 'scale(1)';
-                this.style.backgroundColor = 'rgba(255, 182, 193, 0.1)';
-            });
-            
-            // Trigger do input file quando clicar na área de upload
-            carouselUpload.addEventListener('click', function() {
-                if (siteData.carouselImages.length >= MAX_CAROUSEL_IMAGES) {
-                    showCarouselError(`❌ Máximo de ${MAX_CAROUSEL_IMAGES} imagens atingido!`);
-                    return;
-                }
-                carouselInput.click();
-            });
-            
-            // CORREÇÃO: Remover o atributo capture que força a câmera
-            // Melhorar o input file para mobile
-            carouselInput.style.display = 'none';
-            carouselInput.setAttribute('accept', 'image/*');
-            carouselInput.setAttribute('multiple', 'true');
-            
-            // REMOVIDO: carouselInput.setAttribute('capture', 'environment'); // ← ESTA LINHA É O PROBLEMA
-            
-            // Adicionar atributos para melhor experiência mobile
-            carouselInput.setAttribute('aria-label', 'Selecionar fotos para o carrossel');
-            
-            // Adicionar evento para melhor feedback no mobile
-            carouselInput.addEventListener('change', function() {
-                if (this.files.length > 0) {
-                    // Feedback visual de sucesso
-                    carouselUpload.style.borderColor = '#28a745';
-                    carouselUpload.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
-                    
-                    // Voltar ao normal após 1 segundo
-                    setTimeout(() => {
-                        carouselUpload.style.borderColor = '';
-                        carouselUpload.style.backgroundColor = '';
-                    }, 1000);
-                }
-            });
         }
 
         // =============================================
@@ -2903,7 +2634,6 @@
             batchUpdatePreview();
             autoSave(); // ← Importante salvar automaticamente
         }
-
         // =============================================
         // FUNÇÕES ORIGINAIS MANTIDAS (RESUMO)
         // =============================================
@@ -2949,7 +2679,7 @@
             // Ícone de música dentro do preview - COM COR ATUALIZADA
             if (siteData.elements.music && siteData.elements.musicUrl) {
                 previewHTML += `
-                    <button class="preview-music-control" style="background: ${siteData.primaryColor}; color: white;" onclick="toggleMusic()">❚❚</button>
+                    <button class="preview-music-control" style="background: ${siteData.primaryColor}; color: white;" onclick="toggleMusic()">♪</button>
                 `;
             }
             
@@ -2986,7 +2716,7 @@
             }
 
             // Carrossel - COM CORES ATUALIZADAS
-            if (siteData.elements.carousel && siteData.carouselImages && siteData.carouselImages.length >= MIN_CAROUSEL_IMAGES) {
+            if (siteData.elements.carousel && siteData.carouselImages && siteData.carouselImages.length >= 3) {
                 previewHTML += `
                     <div class="carousel-container">
                         <div class="carousel">
@@ -3133,7 +2863,7 @@
             screen.innerHTML = previewHTML;
 
             // Inicializar componentes interativos do preview
-            if (siteData.elements.carousel && siteData.carouselImages.length >= MIN_CAROUSEL_IMAGES && document.querySelector('.carousel')) {
+            if (siteData.elements.carousel && siteData.carouselImages.length >= 3 && document.querySelector('.carousel')) {
                 initCarousel();
             }
 
@@ -3257,7 +2987,7 @@
             if (prevBtn) prevBtn.addEventListener('click', prevSlide);
             
             // Auto-advance
-            //setInterval(nextSlide, 5000);
+            setInterval(nextSlide, 5000);
         }
 
         function initPlanAnimation() {
@@ -3644,8 +3374,6 @@
                 location.reload();       // 🔄 atualiza a página automaticamente
             });
 
-            // Inicializar upload mobile
-            initializeMobileUpload();
         }
 
         // =============================================
@@ -3670,7 +3398,6 @@
             updateDeclarationFields();
             updatePlanFields();
             updatePromiseFields();
-            updateCarouselPreview();
             updateProgressBar();
             batchUpdatePreview();
             
